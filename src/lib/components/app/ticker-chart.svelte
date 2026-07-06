@@ -144,8 +144,11 @@
 			series.push(signalLine);
 		}
 
+		// Stretch factors are proportional, so they work even before the chart
+		// has been laid out (setHeight computes NaN factors at height 0).
 		const panes = chart.panes();
-		for (let i = 1; i < panes.length; i += 1) panes[i].setHeight(110);
+		panes[0].setStretchFactor(3.2);
+		for (let i = 1; i < panes.length; i += 1) panes[i].setStretchFactor(1);
 
 		chart.applyOptions(themeOptions(dark));
 		chart.timeScale().fitContent();

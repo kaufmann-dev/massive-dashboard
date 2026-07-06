@@ -60,7 +60,7 @@
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
-				{#each data.holdings as holding (holding.accession_number + holding.cusip + (holding.put_call ?? ''))}
+				{#each data.holdings as holding (holding.rowKey)}
 					<Table.Row>
 						<Table.Cell class="whitespace-nowrap">{fmtDate(holding.filing_date)}</Table.Cell>
 						<Table.Cell class="whitespace-nowrap">{fmtDate(holding.period)}</Table.Cell>

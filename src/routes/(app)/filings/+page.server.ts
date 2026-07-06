@@ -15,9 +15,19 @@ export const load: PageServerLoad = async ({ url }) => {
 		sort: 'filing_date.desc'
 	});
 
+	// The index can contain byte-identical duplicate rows; drop them so keyed
+	// rendering stays stable.
+	const seen = new Set<string>();
+	const filings = (response.results ?? []).filter((filing) => {
+		const key = `${filing.accession_number}:${filing.cik}:${filing.form_type ?? ''}`;
+		if (seen.has(key)) return false;
+		seen.add(key);
+		return true;
+	});
+
 	return {
 		filters: { ticker, formType },
-		filings: response.results ?? [],
+		filings,
 		nextCursor: extractCursor(response.next_url)
 	};
 };

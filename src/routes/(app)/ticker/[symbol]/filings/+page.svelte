@@ -53,7 +53,7 @@
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
-					{#each data.index as filing (filing.accession_number + filing.form_type)}
+					{#each data.index as filing (filing.rowKey)}
 						<Table.Row>
 							<Table.Cell class="whitespace-nowrap">{fmtDate(filing.filing_date)}</Table.Cell>
 							<Table.Cell
@@ -105,7 +105,7 @@
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
-					{#each data.form4 as filing (filing.accession_number + (filing.transaction_date ?? '') + (filing.security_title ?? ''))}
+					{#each data.form4 as filing (filing.rowKey)}
 						<Table.Row>
 							<Table.Cell class="whitespace-nowrap"
 								>{fmtDate(filing.transaction_date ?? filing.filing_date)}</Table.Cell
@@ -162,7 +162,7 @@
 		</Card.Description>
 	</Card.Header>
 	<Card.Content class="grid gap-3">
-		{#each data.eightK as disclosure (disclosure.accession_number + (disclosure.tertiary_category ?? ''))}
+		{#each data.eightK as disclosure (disclosure.rowKey)}
 			<div class="grid gap-1 border-b pb-3 text-sm last:border-b-0">
 				<div class="flex flex-wrap items-center gap-2">
 					<span class="text-muted-foreground">{fmtDate(disclosure.filing_date)}</span>

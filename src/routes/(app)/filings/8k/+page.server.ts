@@ -1,5 +1,6 @@
 import { extractCursor } from '$lib/server/massive/client';
 import { listEightKDisclosures, listEightKText } from '$lib/server/massive/endpoints';
+import { withRowKeys } from '$lib/format';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url }) => {
@@ -30,7 +31,10 @@ export const load: PageServerLoad = async ({ url }) => {
 	});
 	return {
 		filters: { ticker, view },
-		disclosures: response.results ?? [],
+		disclosures: withRowKeys(
+			response.results ?? [],
+			(disclosure) => `${disclosure.accession_number}:${disclosure.tertiary_category ?? ''}`
+		),
 		texts: [],
 		nextCursor: extractCursor(response.next_url)
 	};

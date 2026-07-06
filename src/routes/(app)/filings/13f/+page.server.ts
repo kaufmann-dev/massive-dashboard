@@ -1,5 +1,6 @@
 import { extractCursor } from '$lib/server/massive/client';
 import { listThirteenF } from '$lib/server/massive/endpoints';
+import { withRowKeys } from '$lib/format';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url }) => {
@@ -15,7 +16,10 @@ export const load: PageServerLoad = async ({ url }) => {
 
 	return {
 		filerCik,
-		holdings: response.results ?? [],
+		holdings: withRowKeys(
+			response.results ?? [],
+			(holding) => `${holding.accession_number}:${holding.cusip}:${holding.put_call ?? ''}`
+		),
 		nextCursor: extractCursor(response.next_url)
 	};
 };

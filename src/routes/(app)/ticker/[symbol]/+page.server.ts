@@ -4,8 +4,24 @@ import {
 	getTickerEvents
 } from '$lib/server/massive/endpoints';
 import type { ChartPayload } from '$lib/massive/chart';
-import { lastBusinessDay } from '$lib/format';
+import type { DailyOpenClose } from '$lib/massive/types';
 import type { PageServerLoad } from './$types';
+
+// Walks back over recent business days so market holidays (which have no
+// daily summary) don't leave the card empty.
+async function latestDailySummary(symbol: string): Promise<DailyOpenClose | null> {
+	const date = new Date();
+	for (let attempts = 0; attempts < 5;) {
+		date.setUTCDate(date.getUTCDate() - 1);
+		if (date.getUTCDay() === 0 || date.getUTCDay() === 6) continue;
+		attempts += 1;
+		const summary = await getDailyTickerSummary(symbol, date.toISOString().slice(0, 10)).catch(
+			() => null
+		);
+		if (summary) return summary;
+	}
+	return null;
+}
 
 export const load: PageServerLoad = async ({ params, fetch }) => {
 	const symbol = params.symbol.toUpperCase();
@@ -19,7 +35,7 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
 
 	const [chart, daySummary, related, events] = await Promise.all([
 		chartPromise,
-		getDailyTickerSummary(symbol, lastBusinessDay()).catch(() => null),
+		latestDailySummary(symbol),
 		getRelatedTickers(symbol).catch(() => null),
 		getTickerEvents(symbol).catch(() => null)
 	]);
