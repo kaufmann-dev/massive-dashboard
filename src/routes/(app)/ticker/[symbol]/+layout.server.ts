@@ -3,8 +3,10 @@ import { MassiveApiError } from '$lib/server/massive/client';
 import {
 	getPreviousDayBar,
 	getTickerOverview,
-	getTickerSnapshot
+	getTickerSnapshot,
+	listTickers
 } from '$lib/server/massive/endpoints';
+import type { TickerOverview } from '$lib/massive/types';
 import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async ({ params }) => {
@@ -12,22 +14,35 @@ export const load: LayoutServerLoad = async ({ params }) => {
 
 	const [overviewResponse, snapshotResponse, previousResponse] = await Promise.all([
 		getTickerOverview(symbol).catch((cause) => {
-			if (cause instanceof MassiveApiError && cause.status === 404) {
-				error(404, `Unknown ticker "${symbol}"`);
-			}
+			if (cause instanceof MassiveApiError && cause.status === 404) return null;
 			throw cause;
 		}),
 		getTickerSnapshot(symbol).catch(() => null),
 		getPreviousDayBar(symbol).catch(() => null)
 	]);
 
-	const overview = overviewResponse.results;
-	if (!overview) error(404, `Unknown ticker "${symbol}"`);
+	const previousBar = previousResponse?.results?.[0] ?? null;
+
+	let overview: TickerOverview | undefined = overviewResponse?.results;
+	if (!overview) {
+		// Delisted tickers (e.g. from FINRA short-interest data) are missing
+		// from the reference API but may still have listing or price data.
+		const listed = await listTickers({ ticker: symbol, active: false, limit: 1 }).catch(
+			() => null
+		);
+		overview = listed?.results?.[0];
+	}
+	if (!overview) {
+		// Only render a bare page when price data proves the ticker existed;
+		// otherwise the symbol is genuinely unknown.
+		if (!previousBar && !snapshotResponse?.ticker) error(404, `Unknown ticker "${symbol}"`);
+		overview = { ticker: symbol, active: false };
+	}
 
 	return {
 		symbol,
 		overview,
 		snapshot: snapshotResponse?.ticker ?? null,
-		previousBar: previousResponse?.results?.[0] ?? null
+		previousBar
 	};
 };
