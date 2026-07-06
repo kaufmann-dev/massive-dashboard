@@ -6,6 +6,12 @@
 	import { resolveHref } from '$lib/paths';
 	import { navGroups } from './nav';
 
+	const sidebar = Sidebar.useSidebar();
+
+	function closeMobileSidebar() {
+		if (sidebar.isMobile) sidebar.setOpenMobile(false);
+	}
+
 	function isActive(href: string): boolean {
 		const { pathname } = page.url;
 		if (href === '/') return pathname === '/';
@@ -19,7 +25,7 @@
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton size="lg">
 					{#snippet child({ props })}
-						<a href={resolve('/')} {...props}>
+						<a href={resolve('/')} {...props} onclick={closeMobileSidebar}>
 							<Logo class="text-foreground size-7! shrink-0" />
 							<div class="grid flex-1 text-left text-sm leading-tight">
 								<span class="truncate font-semibold">Massive Dashboard</span>
@@ -41,7 +47,7 @@
 							<Sidebar.MenuItem>
 								<Sidebar.MenuButton isActive={isActive(item.href)}>
 									{#snippet child({ props })}
-										<a href={resolveHref(item.href)} {...props}>
+										<a href={resolveHref(item.href)} {...props} onclick={closeMobileSidebar}>
 											<item.icon />
 											<span>{item.title}</span>
 										</a>
