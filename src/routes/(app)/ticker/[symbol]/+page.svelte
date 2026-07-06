@@ -80,7 +80,6 @@
 				{/each}
 			</div>
 			<div class="flex flex-wrap items-center gap-1">
-				{#if loading}<Spinner class="size-4" />{/if}
 				{#each overlayToggles as toggle (toggle.key)}
 					<Toggle
 						size="sm"
@@ -111,11 +110,18 @@
 		</Card.Description>
 	</Card.Header>
 	<Card.Content>
-		{#if chart.bars.length === 0}
-			<p class="text-muted-foreground py-16 text-center text-sm">No price data for this range.</p>
-		{:else}
-			<TickerChart payload={chart} />
-		{/if}
+		<div class="relative">
+			{#if chart.bars.length === 0}
+				<p class="text-muted-foreground py-16 text-center text-sm">No price data for this range.</p>
+			{:else}
+				<TickerChart payload={chart} />
+			{/if}
+			{#if loading}
+				<div class="bg-background/50 absolute inset-0 z-10 flex items-center justify-center">
+					<Spinner class="size-6" />
+				</div>
+			{/if}
+		</div>
 	</Card.Content>
 </Card.Root>
 
