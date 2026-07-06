@@ -69,7 +69,14 @@
 			<Table.Body>
 				{#each data.ipos as ipo (ipo.ticker + (ipo.listing_date ?? '') + (ipo.ipo_status ?? ''))}
 					<Table.Row>
-						<Table.Cell><TickerLink ticker={ipo.ticker} /></Table.Cell>
+						<Table.Cell>
+							{#if ipo.ipo_status === 'new' || ipo.ipo_status === 'history'}
+								<TickerLink ticker={ipo.ticker} />
+							{:else}
+								<!-- Not yet (or never) listed, so there is no ticker page. -->
+								<span class="font-mono font-medium">{ipo.ticker ?? '–'}</span>
+							{/if}
+						</Table.Cell>
 						<Table.Cell class="max-w-64 truncate">{ipo.issuer_name ?? '–'}</Table.Cell>
 						<Table.Cell>
 							<Badge variant={statusVariant(ipo.ipo_status)}>{titleCase(ipo.ipo_status)}</Badge>
