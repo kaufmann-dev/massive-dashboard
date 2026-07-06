@@ -105,3 +105,21 @@ pnpm lint
 pnpm build
 pnpm db:migrate
 ```
+
+## Coolify Deployment
+
+- **Build Pack**: Nixpacks
+- **Base Directory**: `/`
+
+The build and start commands are handled by `nixpacks.toml`. The runtime is pinned via `engines.node` in `package.json` — do **not** set `NIXPACKS_NODE_VERSION` in Coolify environment variables.
+
+- **Environment Variables**
+  - **Required**
+    - `DATABASE_URL` — PostgreSQL connection string
+    - `MASSIVE_API_KEY` — Massive.com Stocks API key
+    - `ADMIN_EMAIL` — Admin account email
+    - `ADMIN_PASSWORD` — Admin account password (minimum 12 characters)
+    - `BETTER_AUTH_SECRET` — Session signing secret
+  - **Optional**
+    - `ORIGIN` — Public HTTPS URL of the deployed app
+    - `BETTER_AUTH_URL` — Override auth base URL (defaults to `ORIGIN`)
