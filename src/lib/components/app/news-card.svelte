@@ -16,21 +16,19 @@
 	}
 </script>
 
-<Card.Root class="gap-3 overflow-hidden pt-0">
+<Card.Root class="gap-3 overflow-hidden {article.image_url && !imageFailed ? 'pt-0' : ''}">
 	{#if article.image_url && !imageFailed}
 		<img
 			src={article.image_url}
 			alt=""
 			loading="lazy"
-			class="bg-muted aspect-[2/1] w-full object-cover"
+			class="bg-muted aspect-[3/1] w-full object-cover"
 			onerror={() => (imageFailed = true)}
 			{@attach (img) => {
 				// A failure that fired before hydration never reaches onerror.
 				if (img.complete && img.naturalWidth === 0) imageFailed = true;
 			}}
 		/>
-	{:else}
-		<div class="bg-muted aspect-[2/1] w-full"></div>
 	{/if}
 	<Card.Header>
 		<Card.Description>
