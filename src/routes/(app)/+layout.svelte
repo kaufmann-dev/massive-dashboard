@@ -1,6 +1,7 @@
 <script lang="ts">
 	import AppSidebar from '$lib/components/app/app-sidebar.svelte';
 	import MarketStatusBadge from '$lib/components/app/market-status-badge.svelte';
+	import NavigationProgress from '$lib/components/app/navigation-progress.svelte';
 	import ThemeToggle from '$lib/components/app/theme-toggle.svelte';
 	import TickerSearch from '$lib/components/app/ticker-search.svelte';
 	import UserMenu from '$lib/components/app/user-menu.svelte';
@@ -10,6 +11,7 @@
 	let { data, children } = $props();
 </script>
 
+<NavigationProgress />
 <Sidebar.Provider>
 	<AppSidebar />
 	<Sidebar.Inset>
