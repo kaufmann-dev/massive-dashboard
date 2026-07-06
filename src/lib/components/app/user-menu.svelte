@@ -34,11 +34,16 @@
 			</Button>
 		{/snippet}
 	</DropdownMenu.Trigger>
-	<DropdownMenu.Content align="end">
-		<DropdownMenu.Label>
-			<div class="grid">
-				<span>{name}</span>
-				<span class="text-muted-foreground text-xs font-normal">{email}</span>
+	<DropdownMenu.Content align="end" class="w-60">
+		<DropdownMenu.Label class="p-0 font-normal">
+			<div class="flex items-center gap-2 px-2 py-1.5 text-left text-sm">
+				<Avatar.Root class="size-8">
+					<Avatar.Fallback>{initials}</Avatar.Fallback>
+				</Avatar.Root>
+				<div class="grid min-w-0 flex-1 leading-tight">
+					<span class="text-foreground truncate font-medium">{name}</span>
+					<span class="text-muted-foreground truncate text-xs" title={email}>{email}</span>
+				</div>
 			</div>
 		</DropdownMenu.Label>
 		<DropdownMenu.Separator />
