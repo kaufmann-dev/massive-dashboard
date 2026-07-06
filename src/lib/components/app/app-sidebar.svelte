@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { ChartCandlestick } from '@lucide/svelte';
 	import * as Sidebar from '$lib/components/ui/sidebar';
+	import logo from '$lib/assets/logo.svg';
 	import { resolveHref } from '$lib/paths';
 	import { navGroups } from './nav';
 
@@ -20,11 +20,7 @@
 				<Sidebar.MenuButton size="lg">
 					{#snippet child({ props })}
 						<a href={resolve('/')} {...props}>
-							<div
-								class="bg-primary text-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
-							>
-								<ChartCandlestick class="size-4" />
-							</div>
+							<img src={logo} alt="Massive Dashboard" class="size-8 shrink-0 rounded-lg" />
 							<div class="grid flex-1 text-left text-sm leading-tight">
 								<span class="truncate font-semibold">Massive Dashboard</span>
 								<span class="text-muted-foreground truncate text-xs">US Stocks · Starter</span>
