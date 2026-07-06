@@ -67,9 +67,13 @@
 				{#each data.filings as filing (filing.accession_number + filing.cik + filing.form_type)}
 					<Table.Row>
 						<Table.Cell class="whitespace-nowrap">{fmtDate(filing.filing_date)}</Table.Cell>
-						<Table.Cell
-							><Badge variant="outline" class="font-mono">{filing.form_type}</Badge></Table.Cell
-						>
+						<Table.Cell>
+							{#if filing.form_type}
+								<Badge variant="outline" class="font-mono">{filing.form_type}</Badge>
+							{:else}
+								–
+							{/if}
+						</Table.Cell>
 						<Table.Cell>
 							{#if filing.ticker}<TickerLink ticker={filing.ticker} />{:else}–{/if}
 						</Table.Cell>
