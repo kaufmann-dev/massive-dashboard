@@ -2,7 +2,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import * as Sidebar from '$lib/components/ui/sidebar';
-	import logo from '$lib/assets/logo.svg';
+	import Logo from './logo.svelte';
 	import { resolveHref } from '$lib/paths';
 	import { navGroups } from './nav';
 
@@ -20,7 +20,7 @@
 				<Sidebar.MenuButton size="lg">
 					{#snippet child({ props })}
 						<a href={resolve('/')} {...props}>
-							<img src={logo} alt="Massive Dashboard" class="size-8 shrink-0 rounded-lg" />
+							<Logo class="text-foreground size-8 shrink-0" />
 							<div class="grid flex-1 text-left text-sm leading-tight">
 								<span class="truncate font-semibold">Massive Dashboard</span>
 								<span class="text-muted-foreground truncate text-xs">US Stocks · Starter</span>
