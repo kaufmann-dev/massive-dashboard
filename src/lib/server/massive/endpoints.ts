@@ -268,8 +268,10 @@ export function getTopMovers(direction: 'gainers' | 'losers', query: Query = {})
 }
 
 export function listUnifiedSnapshots(query: Query = {}) {
+	// The API rejects `type` when a ticker filter is present.
+	const hasTickerFilter = Object.keys(query).some((key) => key.startsWith('ticker'));
 	return massiveGet<ListResponse<UnifiedSnapshot>>('/v3/snapshot', {
-		type: 'stocks',
+		...(hasTickerFilter ? {} : { type: 'stocks' }),
 		...query
 	});
 }

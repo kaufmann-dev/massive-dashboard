@@ -107,3 +107,21 @@ export function titleCase(value: string | null | undefined): string {
 	if (!value) return '–';
 	return value.replaceAll('_', ' ').replace(/\b\w/g, (c) => c.toUpperCase());
 }
+
+/**
+ * Attaches a unique `rowKey` to records that have no natural identifier.
+ * Repeated natural keys get an occurrence suffix so keyed `{#each}` blocks
+ * stay stable even when the API returns colliding or duplicate rows.
+ */
+export function withRowKeys<T>(
+	items: T[],
+	keyOf: (item: T) => string
+): Array<T & { rowKey: string }> {
+	const counts = new Map<string, number>();
+	return items.map((item) => {
+		const base = keyOf(item);
+		const count = counts.get(base) ?? 0;
+		counts.set(base, count + 1);
+		return { ...item, rowKey: count === 0 ? base : `${base}#${count}` };
+	});
+}

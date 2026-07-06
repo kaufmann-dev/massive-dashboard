@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ url }) => {
 		section,
 		cursor,
 		limit: 10,
-		sort: 'filing_date.desc'
+		sort: 'period_end.desc'
 	});
 
 	return {

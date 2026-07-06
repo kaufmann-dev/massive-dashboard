@@ -80,7 +80,7 @@
 {#if data.filters.view === 'disclosures'}
 	<Card.Root>
 		<Card.Content class="grid gap-3">
-			{#each data.disclosures as disclosure (disclosure.accession_number + (disclosure.tertiary_category ?? '') + (disclosure.supporting_text?.slice(0, 40) ?? ''))}
+			{#each data.disclosures as disclosure (disclosure.rowKey)}
 				<div class="grid gap-1 border-b pb-3 text-sm last:border-b-0">
 					<div class="flex flex-wrap items-center gap-2">
 						<span class="text-muted-foreground whitespace-nowrap"

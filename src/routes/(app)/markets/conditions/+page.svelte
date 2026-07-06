@@ -65,7 +65,7 @@
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
-				{#each data.conditions as condition (condition.id + condition.type)}
+				{#each data.conditions as condition (`${condition.type}:${condition.id}:${condition.name}`)}
 					<Table.Row>
 						<Table.Cell class="text-right tabular-nums">{condition.id}</Table.Cell>
 						<Table.Cell class="font-medium">{condition.name}</Table.Cell>

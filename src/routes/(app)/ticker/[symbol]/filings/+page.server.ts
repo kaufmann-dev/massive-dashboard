@@ -4,6 +4,7 @@ import {
 	listForm4,
 	listRiskFactors
 } from '$lib/server/massive/endpoints';
+import { withRowKeys } from '$lib/format';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
@@ -17,9 +18,18 @@ export const load: PageServerLoad = async ({ params }) => {
 	]);
 
 	return {
-		index: index.results ?? [],
+		index: withRowKeys(
+			index.results ?? [],
+			(filing) => `${filing.accession_number}:${filing.form_type ?? ''}`
+		),
 		riskFactors: riskFactors.results ?? [],
-		form4: form4.results ?? [],
-		eightK: eightK.results ?? []
+		form4: withRowKeys(
+			form4.results ?? [],
+			(filing) => `${filing.accession_number}:${filing.transaction_date ?? ''}`
+		),
+		eightK: withRowKeys(
+			eightK.results ?? [],
+			(disclosure) => `${disclosure.accession_number}:${disclosure.tertiary_category ?? ''}`
+		)
 	};
 };
