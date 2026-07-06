@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { ContextMenu as ContextMenuPrimitive } from "bits-ui";
-	import { cn, type WithoutChild } from "$lib/utils.js";
-	import { HugeiconsIcon } from "@hugeicons/svelte"
+	import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
+	import { cn, type WithoutChild } from '$lib/utils.js';
+	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { Tick02Icon } from '@hugeicons/core-free-icons';
 
 	let {
@@ -26,9 +26,11 @@
 	{...restProps}
 >
 	{#snippet children({ checked })}
-		<span class="pointer-events-none absolute right-2 flex items-center justify-center pointer-events-none">
+		<span
+			class="pointer-events-none absolute right-2 flex items-center justify-center pointer-events-none"
+		>
 			{#if checked}
-				<HugeiconsIcon icon={Tick02Icon} strokeWidth={2}  />
+				<HugeiconsIcon icon={Tick02Icon} strokeWidth={2} />
 			{/if}
 		</span>
 		{@render childrenProp?.({ checked })}

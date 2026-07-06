@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { RangeCalendar as RangeCalendarPrimitive } from "bits-ui";
-	import { cn, type WithoutChildrenOrChild } from "$lib/utils.js";
-	import { HugeiconsIcon } from "@hugeicons/svelte"
+	import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
+	import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
+	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { ArrowDownIcon } from '@hugeicons/core-free-icons';
 
 	let {
@@ -14,7 +14,7 @@
 
 <span
 	class={cn(
-		"has-focus:border-ring border-input has-focus:ring-ring/50 relative flex rounded-md border shadow-xs has-focus:ring-[3px]",
+		'has-focus:border-ring border-input has-focus:ring-ring/50 relative flex rounded-md border shadow-xs has-focus:ring-[3px]',
 		className
 	)}
 >
@@ -37,7 +37,7 @@
 				aria-hidden="true"
 			>
 				{yearItems.find((item) => item.value === value)?.label || selectedYearItem.label}
-				<HugeiconsIcon icon={ArrowDownIcon} strokeWidth={2} class={cn("size-4", className)} />
+				<HugeiconsIcon icon={ArrowDownIcon} strokeWidth={2} class={cn('size-4', className)} />
 			</span>
 		{/snippet}
 	</RangeCalendarPrimitive.YearSelect>

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Command as CommandPrimitive } from "bits-ui";
-	import { cn } from "$lib/utils.js";
-	import { HugeiconsIcon } from "@hugeicons/svelte"
+	import { Command as CommandPrimitive } from 'bits-ui';
+	import { cn } from '$lib/utils.js';
+	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { Tick02Icon } from '@hugeicons/core-free-icons';
 
 	let {
@@ -22,5 +22,9 @@
 	{...restProps}
 >
 	{@render children?.()}
-	<HugeiconsIcon icon={Tick02Icon} strokeWidth={2} class="cn-command-item-indicator ml-auto opacity-0 group-has-[[data-slot=command-shortcut]]/command-item:hidden group-data-[checked=true]/command-item:opacity-100" />
+	<HugeiconsIcon
+		icon={Tick02Icon}
+		strokeWidth={2}
+		class="cn-command-item-indicator ml-auto opacity-0 group-has-[[data-slot=command-shortcut]]/command-item:hidden group-data-[checked=true]/command-item:opacity-100"
+	/>
 </CommandPrimitive.Item>

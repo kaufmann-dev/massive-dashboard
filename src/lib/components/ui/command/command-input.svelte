@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { Command as CommandPrimitive } from "bits-ui";
-	import { cn } from "$lib/utils.js";
-	import * as InputGroup from "$lib/components/ui/input-group/index.js";
-	import { HugeiconsIcon } from "@hugeicons/svelte"
+	import { Command as CommandPrimitive } from 'bits-ui';
+	import { cn } from '$lib/utils.js';
+	import * as InputGroup from '$lib/components/ui/input-group/index.js';
+	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { SearchIcon } from '@hugeicons/core-free-icons';
 
 	let {
 		ref = $bindable(null),
 		class: className,
-		value = $bindable(""),
+		value = $bindable(''),
 		...restProps
 	}: CommandPrimitive.InputProps = $props();
 </script>
@@ -19,7 +19,7 @@
 			{value}
 			data-slot="command-input"
 			class={cn(
-				"w-full text-xs/relaxed outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+				'w-full text-xs/relaxed outline-hidden disabled:cursor-not-allowed disabled:opacity-50',
 				className
 			)}
 			{...restProps}

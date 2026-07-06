@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Menubar as MenubarPrimitive } from "bits-ui";
-	import { cn, type WithoutChild } from "$lib/utils.js";
-	import { HugeiconsIcon } from "@hugeicons/svelte"
+	import { Menubar as MenubarPrimitive } from 'bits-ui';
+	import { cn, type WithoutChild } from '$lib/utils.js';
+	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { Tick02Icon } from '@hugeicons/core-free-icons';
 
 	let {
@@ -30,7 +30,7 @@
 			class="left-2 size-4 [&_svg:not([class*='size-'])]:size-4 pointer-events-none absolute flex items-center justify-center"
 		>
 			{#if checked}
-				<HugeiconsIcon icon={Tick02Icon} strokeWidth={2}  />
+				<HugeiconsIcon icon={Tick02Icon} strokeWidth={2} />
 			{/if}
 		</span>
 		{@render childrenProp?.({ checked })}

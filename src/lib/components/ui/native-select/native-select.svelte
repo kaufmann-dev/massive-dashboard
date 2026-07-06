@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { cn, type WithElementRef } from "$lib/utils.js";
-	import type { HTMLSelectAttributes } from "svelte/elements";
-	import { HugeiconsIcon } from "@hugeicons/svelte"
+	import { cn, type WithElementRef } from '$lib/utils.js';
+	import type { HTMLSelectAttributes } from 'svelte/elements';
+	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { UnfoldMoreIcon } from '@hugeicons/core-free-icons';
 
-	type NativeSelectProps = Omit<WithElementRef<HTMLSelectAttributes>, "size"> & {
-		size?: "sm" | "default";
+	type NativeSelectProps = Omit<WithElementRef<HTMLSelectAttributes>, 'size'> & {
+		size?: 'sm' | 'default';
 	};
 
 	let {
 		ref = $bindable(null),
 		value = $bindable(),
 		class: className,
-		size = "default",
+		size = 'default',
 		children,
 		...restProps
 	}: NativeSelectProps = $props();
@@ -20,7 +20,7 @@
 
 <div
 	class={cn(
-		"cn-native-select-wrapper group/native-select relative w-fit has-[select:disabled]:opacity-50",
+		'cn-native-select-wrapper group/native-select relative w-fit has-[select:disabled]:opacity-50',
 		className
 	)}
 	data-slot="native-select-wrapper"
@@ -36,5 +36,11 @@
 	>
 		{@render children?.()}
 	</select>
-	<HugeiconsIcon icon={UnfoldMoreIcon} strokeWidth={2} class="text-muted-foreground top-1/2 right-1.5 size-3.5 -translate-y-1/2 group-data-[size=sm]/native-select:size-3 group-data-[size=sm]/native-select:-translate-y-[calc(--spacing(1.25))] pointer-events-none absolute select-none" aria-hidden data-slot="native-select-icon" />
+	<HugeiconsIcon
+		icon={UnfoldMoreIcon}
+		strokeWidth={2}
+		class="text-muted-foreground top-1/2 right-1.5 size-3.5 -translate-y-1/2 group-data-[size=sm]/native-select:size-3 group-data-[size=sm]/native-select:-translate-y-[calc(--spacing(1.25))] pointer-events-none absolute select-none"
+		aria-hidden
+		data-slot="native-select-icon"
+	/>
 </div>
