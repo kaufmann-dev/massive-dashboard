@@ -13,9 +13,7 @@
 	}
 
 	function isActive(href: string): boolean {
-		const { pathname } = page.url;
-		if (href === '/') return pathname === '/';
-		return pathname === href || pathname.startsWith(`${href}/`);
+		return page.url.pathname === href;
 	}
 </script>
 
