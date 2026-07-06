@@ -65,12 +65,12 @@
 
 <Button
 	variant="outline"
-	class="text-muted-foreground w-full max-w-64 justify-start gap-2 font-normal"
+	class="text-muted-foreground w-full min-w-0 max-w-64 shrink justify-start gap-2 font-normal"
 	onclick={() => (open = true)}
 >
 	<Search class="size-4" />
-	<span class="flex-1 text-left">Search tickers…</span>
-	<Kbd>⌘K</Kbd>
+	<span class="flex-1 truncate text-left">Search tickers…</span>
+	<Kbd class="max-sm:hidden">⌘K</Kbd>
 </Button>
 
 <Command.Dialog
