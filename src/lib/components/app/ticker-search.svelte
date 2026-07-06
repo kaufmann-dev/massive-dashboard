@@ -6,6 +6,7 @@
 	import { Badge } from '$lib/components/ui/badge';
 	import { Button } from '$lib/components/ui/button';
 	import { Kbd } from '$lib/components/ui/kbd';
+	import { Spinner } from '$lib/components/ui/spinner';
 
 	interface SearchResult {
 		ticker: string;
@@ -84,9 +85,18 @@
 		bind:value={() => query, onQueryInput}
 	/>
 	<Command.List>
-		{#if loading}
-			<Command.Loading>Searching…</Command.Loading>
-		{:else if query.trim() && results.length === 0}
+		{#if !query.trim()}
+			<div class="text-muted-foreground py-10 text-center text-sm">
+				Start typing to search stocks by symbol or company name.
+			</div>
+		{:else if loading && results.length === 0}
+			<Command.Loading>
+				<div class="text-muted-foreground flex items-center justify-center gap-2 py-10 text-sm">
+					<Spinner class="size-4" />
+					Searching…
+				</div>
+			</Command.Loading>
+		{:else if results.length === 0}
 			<Command.Empty>No matching tickers.</Command.Empty>
 		{/if}
 		{#if results.length > 0}
