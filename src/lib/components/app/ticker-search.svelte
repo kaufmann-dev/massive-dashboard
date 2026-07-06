@@ -87,7 +87,7 @@
 	<Command.List>
 		{#if !query.trim()}
 			<div class="text-muted-foreground py-10 text-center text-sm">
-				Start typing to search stocks by symbol or company name.
+				Start typing to search by symbol or company name.
 			</div>
 		{:else if loading && results.length === 0}
 			<Command.Loading>

@@ -56,9 +56,13 @@
 					{#each data.index as filing (filing.rowKey)}
 						<Table.Row>
 							<Table.Cell class="whitespace-nowrap">{fmtDate(filing.filing_date)}</Table.Cell>
-							<Table.Cell
-								><Badge variant="outline" class="font-mono">{filing.form_type}</Badge></Table.Cell
-							>
+							<Table.Cell>
+								{#if filing.form_type}
+									<Badge variant="outline" class="font-mono">{filing.form_type}</Badge>
+								{:else}
+									–
+								{/if}
+							</Table.Cell>
 							<Table.Cell>
 								<a
 									href={filing.filing_url}

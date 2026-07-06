@@ -139,8 +139,8 @@ export interface FilingIndexEntry {
 	cik: string;
 	ticker?: string;
 	issuer_name?: string;
-	form_type: string;
-	filing_date: string;
+	form_type?: string;
+	filing_date?: string;
 	filing_url: string;
 }
 
