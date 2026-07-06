@@ -85,7 +85,7 @@
 			href={tabHref(tab.route)}
 			class={cn(
 				buttonVariants({
-					variant: page.url.pathname === tabHref(tab.route) ? 'secondary' : 'ghost',
+					variant: page.route.id === tab.route ? 'secondary' : 'ghost',
 					size: 'sm'
 				})
 			)}
