@@ -6,7 +6,7 @@
      the surrounding text color (e.g. text-foreground). -->
 <svg
 	xmlns="http://www.w3.org/2000/svg"
-	viewBox="0 0 64 64"
+	viewBox="12.75 7.25 38.5 48.5"
 	class={className}
 	role="img"
 	aria-label="Massive Dashboard"
