@@ -27,9 +27,7 @@ export const load: LayoutServerLoad = async ({ params }) => {
 	if (!overview) {
 		// Delisted tickers (e.g. from FINRA short-interest data) are missing
 		// from the reference API but may still have listing or price data.
-		const listed = await listTickers({ ticker: symbol, active: false, limit: 1 }).catch(
-			() => null
-		);
+		const listed = await listTickers({ ticker: symbol, active: false, limit: 1 }).catch(() => null);
 		overview = listed?.results?.[0];
 	}
 	if (!overview) {

@@ -3,12 +3,16 @@ import {
 	Activity,
 	BookOpenText,
 	Briefcase,
+	BriefcaseBusiness,
 	CalendarDays,
 	ChartColumn,
+	ChartSpline,
 	Clock,
 	FileSpreadsheet,
 	FileText,
+	Flame,
 	FolderOpen,
+	Gauge,
 	HandCoins,
 	Landmark,
 	Layers,
@@ -55,6 +59,15 @@ export const navGroups: NavGroup[] = [
 			{ title: 'Status & Hours', href: '/markets/status', icon: Clock },
 			{ title: 'Exchanges', href: '/markets/exchanges', icon: Landmark },
 			{ title: 'Condition Codes', href: '/markets/conditions', icon: Tags }
+		]
+	},
+	{
+		label: 'Economy',
+		items: [
+			{ title: 'Treasury Yields', href: '/economy/treasury-yields', icon: ChartSpline },
+			{ title: 'Inflation', href: '/economy/inflation', icon: Flame },
+			{ title: 'Inflation Expectations', href: '/economy/inflation-expectations', icon: Gauge },
+			{ title: 'Labor Market', href: '/economy/labor-market', icon: BriefcaseBusiness }
 		]
 	},
 	{

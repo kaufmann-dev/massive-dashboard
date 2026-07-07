@@ -41,6 +41,12 @@ export function fmtPercent(value: number | null | undefined): string {
 	return `${sign}${value.toFixed(2)}%`;
 }
 
+/** Fixed-decimal number without a sign prefix (4.253 → "4.25"). */
+export function fmtDecimal(value: number | null | undefined, digits = 2): string {
+	if (value === null || value === undefined || Number.isNaN(value)) return '–';
+	return value.toFixed(digits);
+}
+
 /** Formats a signed absolute change ("+1.23" / "-0.45"). */
 export function fmtChange(value: number | null | undefined): string {
 	if (value === null || value === undefined || Number.isNaN(value)) return '–';

@@ -633,3 +633,54 @@ export interface LastQuoteResponse {
 		t?: number;
 	};
 }
+
+// ---------------------------------------------------------------------------
+// Economy (Fed)
+// ---------------------------------------------------------------------------
+
+/** Yields are percent levels; maturities not issued on a date are absent. */
+export interface TreasuryYieldRecord {
+	date: string;
+	yield_1_month?: number;
+	yield_3_month?: number;
+	yield_6_month?: number;
+	yield_1_year?: number;
+	yield_2_year?: number;
+	yield_3_year?: number;
+	yield_5_year?: number;
+	yield_7_year?: number;
+	yield_10_year?: number;
+	yield_20_year?: number;
+	yield_30_year?: number;
+}
+
+/** Monthly CPI/PCE observations; `pce_spending` is billions of dollars. */
+export interface InflationRecord {
+	date: string;
+	cpi?: number;
+	cpi_core?: number;
+	cpi_year_over_year?: number;
+	pce?: number;
+	pce_core?: number;
+	pce_spending?: number;
+}
+
+export interface InflationExpectationRecord {
+	date: string;
+	forward_years_5_to_10?: number;
+	market_5_year?: number;
+	market_10_year?: number;
+	model_1_year?: number;
+	model_5_year?: number;
+	model_10_year?: number;
+	model_30_year?: number;
+}
+
+/** Monthly labor indicators; `job_openings` is thousands of openings. */
+export interface LaborMarketRecord {
+	date: string;
+	unemployment_rate?: number;
+	labor_force_participation_rate?: number;
+	avg_hourly_earnings?: number;
+	job_openings?: number;
+}
