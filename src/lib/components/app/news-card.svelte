@@ -7,8 +7,6 @@
 
 	let { article }: { article: NewsArticle } = $props();
 
-	let imageFailed = $state(false);
-
 	function sentimentClass(sentiment: string): string {
 		if (sentiment === 'positive') return 'border-green-600/40 text-green-700 dark:text-green-400';
 		if (sentiment === 'negative') return 'border-red-600/40 text-red-700 dark:text-red-400';
@@ -16,20 +14,7 @@
 	}
 </script>
 
-<Card.Root class="gap-3 overflow-hidden {article.image_url && !imageFailed ? 'pt-0' : ''}">
-	{#if article.image_url && !imageFailed}
-		<img
-			src={article.image_url}
-			alt=""
-			loading="lazy"
-			class="bg-muted aspect-[3/1] w-full object-cover"
-			onerror={() => (imageFailed = true)}
-			{@attach (img) => {
-				// A failure that fired before hydration never reaches onerror.
-				if (img.complete && img.naturalWidth === 0) imageFailed = true;
-			}}
-		/>
-	{/if}
+<Card.Root class="gap-3">
 	<Card.Header>
 		<Card.Description>
 			{article.publisher?.name ?? article.author ?? 'Unknown source'} · {fmtDate(
