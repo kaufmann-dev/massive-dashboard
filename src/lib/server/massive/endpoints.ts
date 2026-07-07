@@ -18,7 +18,10 @@ import type {
 	Form4Filing,
 	FullMarketSnapshotResponse,
 	IndicatorResponse,
+	InflationExpectationRecord,
+	InflationRecord,
 	Ipo,
+	LaborMarketRecord,
 	LastQuoteResponse,
 	LastTradeResponse,
 	ListResponse,
@@ -41,6 +44,7 @@ import type {
 	TickerType,
 	TopMoversResponse,
 	Trade,
+	TreasuryYieldRecord,
 	UnifiedSnapshot
 } from '$lib/massive/types';
 
@@ -104,6 +108,33 @@ export function getTickerEvents(id: string, types?: string) {
 		{ types },
 		{ ttl: HOUR }
 	);
+}
+
+// --- Economy (Fed) ------------------------------------------------------------
+// FRED-sourced macro series; published daily or monthly, so long TTLs.
+
+export function listTreasuryYields(query: Query = {}) {
+	return massiveGet<ListResponse<TreasuryYieldRecord>>('/fed/v1/treasury-yields', query, {
+		ttl: 6 * HOUR
+	});
+}
+
+export function listInflation(query: Query = {}) {
+	return massiveGet<ListResponse<InflationRecord>>('/fed/v1/inflation', query, { ttl: 24 * HOUR });
+}
+
+export function listInflationExpectations(query: Query = {}) {
+	return massiveGet<ListResponse<InflationExpectationRecord>>(
+		'/fed/v1/inflation-expectations',
+		query,
+		{ ttl: 6 * HOUR }
+	);
+}
+
+export function listLaborMarket(query: Query = {}) {
+	return massiveGet<ListResponse<LaborMarketRecord>>('/fed/v1/labor-market', query, {
+		ttl: 24 * HOUR
+	});
 }
 
 // --- Filings (SEC EDGAR) ----------------------------------------------------

@@ -4,6 +4,7 @@ import {
 	fmtChange,
 	fmtCompact,
 	fmtDate,
+	fmtDecimal,
 	fmtPercent,
 	fmtPrice,
 	isoDate,
@@ -35,6 +36,22 @@ describe('fmtPercent / fmtChange', () => {
 	it('keeps the minus sign for negative values', () => {
 		expect(fmtPercent(-0.5)).toBe('-0.50%');
 		expect(fmtChange(-0.456)).toBe('-0.46');
+	});
+});
+
+describe('fmtDecimal', () => {
+	it('formats without a sign prefix', () => {
+		expect(fmtDecimal(4.253)).toBe('4.25');
+		expect(fmtDecimal(-0.5)).toBe('-0.50');
+	});
+
+	it('honors the digits argument', () => {
+		expect(fmtDecimal(62.5, 1)).toBe('62.5');
+	});
+
+	it('returns a dash for missing values', () => {
+		expect(fmtDecimal(undefined)).toBe('–');
+		expect(fmtDecimal(null)).toBe('–');
 	});
 });
 

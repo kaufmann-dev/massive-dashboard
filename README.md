@@ -1,6 +1,6 @@
 # Massive Dashboard
 
-SvelteKit dashboard for the Massive.com Stocks API. The app is protected by Better Auth, uses PostgreSQL through Drizzle, and exposes an admin-only interface for market status, movers, snapshots, tickers, filings, fundamentals, corporate actions, news, and ticker detail pages.
+SvelteKit dashboard for the Massive.com Stocks and Economy APIs. The app is protected by Better Auth, uses PostgreSQL through Drizzle, and exposes an admin-only interface for market status, movers, snapshots, tickers, filings, fundamentals, corporate actions, news, ticker detail pages, and economy pages (treasury yields, inflation, inflation expectations, labor market).
 
 ## Stack
 
@@ -8,7 +8,7 @@ SvelteKit dashboard for the Massive.com Stocks API. The app is protected by Bett
 - Svelte 5, Tailwind CSS, shadcn-svelte, and `@lucide/svelte`
 - PostgreSQL, Drizzle ORM, and Drizzle Kit migrations
 - Better Auth with a single seeded admin account
-- Massive.com Stocks API
+- Massive.com Stocks and Economy APIs
 - Vitest, svelte-check, ESLint, and Prettier
 
 ## Environment
@@ -116,7 +116,7 @@ The build and start commands are handled by `nixpacks.toml`. The runtime is pinn
 - **Environment Variables**
   - **Required**
     - `DATABASE_URL` — PostgreSQL connection string
-    - `MASSIVE_API_KEY` — Massive.com Stocks API key
+    - `MASSIVE_API_KEY` — Massive.com API key
     - `ADMIN_EMAIL` — Admin account email
     - `ADMIN_PASSWORD` — Admin account password (minimum 12 characters)
     - `BETTER_AUTH_SECRET` — Session signing secret

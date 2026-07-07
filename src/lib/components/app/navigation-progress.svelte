@@ -3,7 +3,11 @@
 </script>
 
 {#if navigating.to}
-	<div class="pointer-events-none fixed inset-x-0 top-0 z-50 h-0.5" role="status" aria-label="Loading page">
+	<div
+		class="pointer-events-none fixed inset-x-0 top-0 z-50 h-0.5"
+		role="status"
+		aria-label="Loading page"
+	>
 		<div class="bg-primary progress-fill h-full"></div>
 	</div>
 {/if}

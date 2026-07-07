@@ -72,7 +72,11 @@ function buildUrl(path: string, query: Query): string {
 	return url.toString();
 }
 
-async function request<T>(url: string, endpoint: string): Promise<T> {
+// Gateway hiccups (observed as cold-request 504s on some endpoints) get one
+// retry before the error is surfaced.
+const RETRYABLE_STATUSES = new Set([502, 503, 504]);
+
+async function request<T>(url: string, endpoint: string, attempt = 0): Promise<T> {
 	const apiKey = env.MASSIVE_API_KEY;
 	if (!apiKey) {
 		throw new MassiveApiError(
@@ -85,6 +89,10 @@ async function request<T>(url: string, endpoint: string): Promise<T> {
 	const response = await fetch(url, {
 		headers: { Authorization: `Bearer ${apiKey}`, Accept: 'application/json' }
 	});
+
+	if (RETRYABLE_STATUSES.has(response.status) && attempt === 0) {
+		return request<T>(url, endpoint, attempt + 1);
+	}
 
 	if (!response.ok) {
 		let message = `Massive API request failed with status ${response.status}`;
