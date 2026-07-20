@@ -1,27 +1,8 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { resolve } from '$app/paths';
 	import { LogOut } from '@lucide/svelte';
-	import { authClient } from '$lib/auth-client';
 	import * as Avatar from '$lib/components/ui/avatar';
 	import { Button } from '$lib/components/ui/button';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
-
-	let { name, email }: { name: string; email: string } = $props();
-
-	const initials = $derived(
-		name
-			.split(/\s+/)
-			.map((part) => part[0])
-			.join('')
-			.slice(0, 2)
-			.toUpperCase() || 'A'
-	);
-
-	async function signOut() {
-		await authClient.signOut();
-		await goto(resolve('/login'), { invalidateAll: true });
-	}
 </script>
 
 <DropdownMenu.Root>
@@ -29,7 +10,7 @@
 		{#snippet child({ props })}
 			<Button {...props} variant="ghost" size="icon" class="rounded-full">
 				<Avatar.Root class="size-8">
-					<Avatar.Fallback>{initials}</Avatar.Fallback>
+					<Avatar.Fallback>A</Avatar.Fallback>
 				</Avatar.Root>
 			</Button>
 		{/snippet}
@@ -38,18 +19,24 @@
 		<DropdownMenu.Label class="p-0 font-normal">
 			<div class="flex items-center gap-2 px-2 py-1.5 text-left text-sm">
 				<Avatar.Root class="size-8">
-					<Avatar.Fallback>{initials}</Avatar.Fallback>
+					<Avatar.Fallback>A</Avatar.Fallback>
 				</Avatar.Root>
 				<div class="grid min-w-0 flex-1 leading-tight">
-					<span class="text-foreground truncate font-medium">{name}</span>
-					<span class="text-muted-foreground truncate text-xs" title={email}>{email}</span>
+					<span class="text-foreground truncate font-medium">Administrator</span>
+					<span class="text-muted-foreground truncate text-xs">OIDC session</span>
 				</div>
 			</div>
 		</DropdownMenu.Label>
 		<DropdownMenu.Separator />
-		<DropdownMenu.Item onclick={signOut}>
-			<LogOut class="size-4" />
-			Sign out
-		</DropdownMenu.Item>
+		<form method="POST" action="/auth/logout">
+			<DropdownMenu.Item>
+				{#snippet child({ props })}
+					<button {...props} type="submit">
+						<LogOut class="size-4" />
+						Sign out
+					</button>
+				{/snippet}
+			</DropdownMenu.Item>
+		</form>
 	</DropdownMenu.Content>
 </DropdownMenu.Root>

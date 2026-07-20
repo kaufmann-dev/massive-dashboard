@@ -1,13 +1,10 @@
-import type { auth } from '$lib/server/auth';
-
-type AuthSession = typeof auth.$Infer.Session;
+import type { AuthenticatedSession } from '$lib/server/auth/session';
 
 declare global {
 	namespace App {
 		// interface Error {}
 		interface Locals {
-			user: AuthSession['user'] | null;
-			session: AuthSession['session'] | null;
+			session: AuthenticatedSession | null;
 		}
 		// interface PageData {}
 		// interface PageState {}
