@@ -70,10 +70,10 @@
 	},
 	"dependencies": {
 		"@lucide/svelte": "^1.23.0",
-		"better-auth": "^1.6.23",
 		"better-svelte-email": "^2.1.1",
 		"lightweight-charts": "^5.2.0",
 		"mode-watcher": "^1.1.0",
+		"openid-client": "^6.8.4",
 		"resend": "^6.17.1",
 		"sveltekit-superforms": "^2.30.2",
 		"zod": "^4.4.3"

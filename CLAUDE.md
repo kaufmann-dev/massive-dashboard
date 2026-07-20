@@ -34,7 +34,7 @@ pnpm drizzle-kit migrate     # Execute migrations
 - **Icons**: `@lucide/svelte`
 - **Theme**: `mode-watcher`
 - **Database**: Drizzle with PostgreSQL
-- **Auth**: Better Auth
+- **Auth**: Generic confidential OIDC via `openid-client`, with PostgreSQL-backed opaque sessions
 - **Forms**: Superforms and Zod
 - **Email**: Resend and `better-svelte-email`
 - **i18n**: Paraglide
@@ -186,11 +186,11 @@ Avoid these legacy Svelte features in new or refactored code:
 
 ## Backend and Services
 
-- **Authentication**: Check current Better Auth documentation before implementing providers, plugins, adapters, session handling, or account flows.
-  - _Server_: `export const auth = betterAuth({ ... });`
-  - _Hook_: `return svelteKitHandler({ event, resolve, auth, building });`
-  - _Client_: `export const authClient = createAuthClient();`
-  - _Cookies_: `plugins: [sveltekitCookies(getRequestEvent)]`
+- **Authentication**: Keep the provider's access policy as the sole admission control. Use the existing `openid-client` Authorization Code flow with state, nonce, and PKCE S256; do not add application claim allowlists or token-based application sessions.
+  - _OIDC_: `src/lib/server/auth/oidc.ts`
+  - _Sessions_: `src/lib/server/auth/session.ts`
+  - _Guard_: `src/hooks.server.ts`
+  - _Routes_: `src/routes/auth/`
 - **Forms**: Always use Superforms with Zod. Follow the chain: `zod schema -> superforms -> formsnap -> shadcn-svelte form components`. Use `Form.Field`, `Form.Control`, and shadcn error components rather than ad hoc markup.
 - **Email**: Use `better-svelte-email` for templates and Resend for delivery. Render components in server-only code, and send both HTML and plain text.
   ```ts
@@ -209,8 +209,6 @@ For Coolify and Nixpacks:
 - If `pnpm-workspace.yaml` exists in a single-package app, keep a non-empty `packages` list with `.` included.
 - Use `engines.node` and `nixpacks.toml` to pin compatible Node behavior when dependencies require a minimum patch version.
 - Read deployment environment variables from `process.env`. Load `.env` only after checking that the file exists.
-- Validate seed script environment variables before calling Better Auth APIs.
-- Document and enforce minimum seeded account password lengths.
 - Let Nixpacks handle the install phase unless a project-specific reason requires otherwise.
-- Prefer explicit deploy or runtime migration and seed steps when Coolify supports them.
-- Keep build-time migration and seed scripts idempotent when they must run during image builds.
+- Prefer explicit deploy or runtime migration steps when Coolify supports them.
+- Keep build-time migration scripts idempotent when they must run during image builds.

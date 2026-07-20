@@ -1,13 +1,13 @@
 # Massive Dashboard
 
-SvelteKit dashboard for the Massive.com Stocks and Economy APIs. The app is protected by Better Auth, uses PostgreSQL through Drizzle, and exposes an admin-only interface for market status, movers, snapshots, tickers, filings, fundamentals, corporate actions, news, ticker detail pages, and economy pages (treasury yields, inflation, inflation expectations, labor market).
+SvelteKit dashboard for the Massive.com Stocks and Economy APIs. The app is protected by a generic OpenID Connect provider, uses PostgreSQL through Drizzle, and exposes an admin-only interface for market status, movers, snapshots, tickers, filings, fundamentals, corporate actions, news, ticker detail pages, and economy pages (treasury yields, inflation, inflation expectations, labor market).
 
 ## Stack
 
 - SvelteKit with `@sveltejs/adapter-node`
 - Svelte 5, Tailwind CSS, shadcn-svelte, and `@lucide/svelte`
 - PostgreSQL, Drizzle ORM, and Drizzle Kit migrations
-- Better Auth with a single seeded admin account
+- Generic confidential OpenID Connect client with server-side application sessions
 - Massive.com Stocks and Economy APIs
 - Vitest, svelte-check, ESLint, and Prettier
 
@@ -18,15 +18,34 @@ Create `.env` from `.env.example` and fill in the deployment-specific values:
 ```bash
 DATABASE_URL="postgres://user:password@host:5432/db-name"
 MASSIVE_API_KEY="your-massive-api-key"
-ADMIN_EMAIL="admin@example.com"
-ADMIN_PASSWORD="change-me-at-least-12-chars"
-BETTER_AUTH_SECRET="generate-a-random-secret"
 ORIGIN="https://stocks.example.com"
+OIDC_ISSUER="https://identity.example.com/application/o/massive-dashboard/"
+OIDC_CLIENT_ID="massive-dashboard"
+OIDC_CLIENT_SECRET="provider-issued-client-secret"
 ```
 
-`ADMIN_PASSWORD` must be at least 12 characters. The app seeds this admin account on startup and updates the stored password hash if the password is rotated.
+Required variables are `DATABASE_URL`, `MASSIVE_API_KEY`, `ORIGIN`, `OIDC_ISSUER`, `OIDC_CLIENT_ID`, and `OIDC_CLIENT_SECRET`. `OIDC_CLIENT_AUTH_METHOD` is optional and accepts `client_secret_post` (the default) or `client_secret_basic`; it must match the provider registration. No other authentication variables are used.
 
-Use `BETTER_AUTH_URL` when Better Auth should use a different public base URL than `ORIGIN`. Otherwise `ORIGIN` is used as the Better Auth base URL.
+## Authentication Setup
+
+Massive Dashboard is a confidential OIDC web client using Authorization Code flow with one-time server-side state, nonce validation, and PKCE S256. After the callback, it creates an opaque app-local server-side session; the provider's application access policy is the sole admission control for this admin-only dashboard, with no application email, group, subject, identity, or claim allowlist.
+
+- Public Client: Off
+- Callback path: `/auth/callback`
+- Application logout path: `/auth/logout` (POST)
+- Post-logout path: `/auth/logged-out`
+- Authentication environment: use the required and optional variables listed once under Environment above.
+
+Set `ORIGIN` to the final public HTTPS origin. No production origin is committed; if production uses `https://stocks.example.com`, register callback URL `https://stocks.example.com/auth/callback` and post-logout URL `https://stocks.example.com/auth/logged-out`. Logout uses the provider's advertised RP-Initiated Logout endpoint and the application does not implement back-channel logout.
+
+The app requests only the `openid` scope, never requests `offline_access`, and never performs refresh requests. Access and refresh tokens are discarded after the code exchange; only the raw ID token remains in the server-side session, solely as `id_token_hint`, and is deleted with that session. The browser cookie contains only a random opaque token whose hash is stored in PostgreSQL. Sessions have a 24-hour sliding idle timeout extended only by explicit same-origin signals from trusted pointer, keyboard, or click activity—not navigation, probes, polling, prefetch, or passive traffic—and a fixed seven-day absolute lifetime.
+
+Manual provider/deployment handoff:
+
+1. Create a confidential web application with Public Client Off, Authorization Code enabled, and the exact callback and post-logout URLs derived from `ORIGIN` above.
+2. Configure the provider client authentication method to match `OIDC_CLIENT_AUTH_METHOD`, and ensure discovery advertises PKCE `S256` and `end_session_endpoint`.
+3. Apply the provider's access policy to admit only the administrator or administrators; do not reproduce that policy with application claims.
+4. Set the required environment variables in the deployment secret manager, run `pnpm db:migrate`, and deploy. The migration removes obsolete local-account/session records without changing dashboard data or Massive API behavior.
 
 ## Development
 
@@ -82,7 +101,7 @@ node build
 
 The project uses SvelteKit adapter-node, so production output is written to `build/`. Provide the environment variables listed above in the hosting platform. In production, do not rely on a checked-in `.env` file; set variables in the platform UI or secret manager.
 
-The server startup hook runs Drizzle migrations and seeds the admin account before handling requests. You can still run `pnpm db:migrate` manually during deployment if your platform supports a pre-deploy command, but it is idempotent with the startup migration.
+The server startup hook runs Drizzle migrations before handling requests. You can still run `pnpm db:migrate` manually during deployment if your platform supports a pre-deploy command; it is idempotent with the startup migration.
 
 For Coolify/Nixpacks deployments:
 
@@ -90,7 +109,7 @@ For Coolify/Nixpacks deployments:
 - Build command: `pnpm build`
 - Start command: `node build`
 - Publish directory: leave empty for adapter-node
-- Set `DATABASE_URL`, `MASSIVE_API_KEY`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `BETTER_AUTH_SECRET`, and `ORIGIN`
+- Set `DATABASE_URL`, `MASSIVE_API_KEY`, `ORIGIN`, `OIDC_ISSUER`, `OIDC_CLIENT_ID`, and `OIDC_CLIENT_SECRET`; set `OIDC_CLIENT_AUTH_METHOD` only when the provider is not configured for `client_secret_post`
 - Ensure the PostgreSQL database is provisioned separately and reachable from the app container
 
 If the app is behind a reverse proxy, set `ORIGIN` to the final public HTTPS URL. If the platform requires forwarded headers instead, configure them according to SvelteKit adapter-node hosting rules.
@@ -117,9 +136,9 @@ The build and start commands are handled by `nixpacks.toml`. The runtime is pinn
   - **Required**
     - `DATABASE_URL` — PostgreSQL connection string
     - `MASSIVE_API_KEY` — Massive.com API key
-    - `ADMIN_EMAIL` — Admin account email
-    - `ADMIN_PASSWORD` — Admin account password (minimum 12 characters)
-    - `BETTER_AUTH_SECRET` — Session signing secret
     - `ORIGIN` — Public HTTPS URL of the deployed app
+    - `OIDC_ISSUER` — OIDC issuer URL used for provider discovery
+    - `OIDC_CLIENT_ID` — Confidential client identifier
+    - `OIDC_CLIENT_SECRET` — Confidential client secret
   - **Optional**
-    - `BETTER_AUTH_URL` — Override auth base URL (defaults to `ORIGIN`)
+    - `OIDC_CLIENT_AUTH_METHOD` — `client_secret_post` (default) or `client_secret_basic`

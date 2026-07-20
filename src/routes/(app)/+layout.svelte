@@ -2,6 +2,7 @@
 	import AppSidebar from '$lib/components/app/app-sidebar.svelte';
 	import MarketStatusBadge from '$lib/components/app/market-status-badge.svelte';
 	import NavigationProgress from '$lib/components/app/navigation-progress.svelte';
+	import SessionActivity from '$lib/components/app/session-activity.svelte';
 	import ThemeToggle from '$lib/components/app/theme-toggle.svelte';
 	import TickerSearch from '$lib/components/app/ticker-search.svelte';
 	import UserMenu from '$lib/components/app/user-menu.svelte';
@@ -12,6 +13,7 @@
 </script>
 
 <NavigationProgress />
+<SessionActivity />
 <Sidebar.Provider>
 	<AppSidebar />
 	<Sidebar.Inset>
@@ -28,7 +30,7 @@
 					afterHours={data.marketStatus?.afterHours}
 				/>
 				<ThemeToggle />
-				<UserMenu name={data.user.name} email={data.user.email} />
+				<UserMenu />
 			</div>
 		</header>
 		<main class="flex flex-1 flex-col gap-6 p-4 md:p-6">
