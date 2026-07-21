@@ -1,12 +1,9 @@
 import { env } from '$env/dynamic/private';
 
-export type ClientAuthMethod = 'client_secret_post' | 'client_secret_basic';
-
 export interface AuthSettings {
 	issuer: URL;
 	clientId: string;
 	clientSecret: string;
-	clientAuthMethod: ClientAuthMethod;
 	origin: URL;
 	callbackUrl: URL;
 	postLogoutUrl: URL;
@@ -39,16 +36,10 @@ export function getAuthSettings(): AuthSettings {
 	const origin = absoluteUrl('ORIGIN', required('ORIGIN', env.ORIGIN));
 	if (origin.pathname !== '/') throw new Error('ORIGIN must not contain a path');
 
-	const configuredMethod = env.OIDC_CLIENT_AUTH_METHOD?.trim() || 'client_secret_post';
-	if (configuredMethod !== 'client_secret_post' && configuredMethod !== 'client_secret_basic') {
-		throw new Error('OIDC_CLIENT_AUTH_METHOD must be client_secret_post or client_secret_basic');
-	}
-
 	return {
 		issuer,
 		clientId: required('OIDC_CLIENT_ID', env.OIDC_CLIENT_ID),
 		clientSecret: required('OIDC_CLIENT_SECRET', env.OIDC_CLIENT_SECRET),
-		clientAuthMethod: configuredMethod,
 		origin,
 		callbackUrl: new URL('/auth/callback', origin),
 		postLogoutUrl: new URL('/auth/logged-out', origin)

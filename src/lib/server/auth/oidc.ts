@@ -47,15 +47,11 @@ async function consumeTransaction(
 
 async function discoverConfiguration(): Promise<oidc.Configuration> {
 	const settings = getAuthSettings();
-	const clientAuthentication =
-		settings.clientAuthMethod === 'client_secret_basic'
-			? oidc.ClientSecretBasic(settings.clientSecret)
-			: oidc.ClientSecretPost(settings.clientSecret);
 	const configuration = await oidc.discovery(
 		settings.issuer,
 		settings.clientId,
 		undefined,
-		clientAuthentication
+		oidc.ClientSecretPost(settings.clientSecret)
 	);
 	const metadata = configuration.serverMetadata();
 	if (!metadata.end_session_endpoint) {
