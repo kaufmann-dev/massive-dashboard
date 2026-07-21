@@ -24,7 +24,7 @@ OIDC_CLIENT_ID="massive-dashboard"
 OIDC_CLIENT_SECRET="provider-issued-client-secret"
 ```
 
-Required variables are `DATABASE_URL`, `MASSIVE_API_KEY`, `ORIGIN`, `OIDC_ISSUER`, `OIDC_CLIENT_ID`, and `OIDC_CLIENT_SECRET`. `OIDC_CLIENT_AUTH_METHOD` is optional and accepts `client_secret_post` (the default) or `client_secret_basic`; it must match the provider registration. No other authentication variables are used.
+Required variables are `DATABASE_URL`, `MASSIVE_API_KEY`, `ORIGIN`, `OIDC_ISSUER`, `OIDC_CLIENT_ID`, and `OIDC_CLIENT_SECRET`. No other authentication variables are used.
 
 ## Authentication Setup
 
@@ -43,7 +43,7 @@ The app requests only the `openid` scope, never requests `offline_access`, and n
 Manual provider/deployment handoff:
 
 1. Create a confidential web application with Public Client Off, Authorization Code enabled, and the exact callback and post-logout URLs derived from `ORIGIN` above.
-2. Configure the provider client authentication method to match `OIDC_CLIENT_AUTH_METHOD`, and ensure discovery advertises PKCE `S256` and `end_session_endpoint`.
+2. Ensure discovery advertises PKCE `S256` and `end_session_endpoint`.
 3. Apply the provider's access policy to admit only the administrator or administrators; do not reproduce that policy with application claims.
 4. Set the required environment variables in the deployment secret manager, run `pnpm db:migrate`, and deploy. The migration removes obsolete local-account/session records without changing dashboard data or Massive API behavior.
 
@@ -109,7 +109,7 @@ For Coolify/Nixpacks deployments:
 - Build command: `pnpm build`
 - Start command: `node build`
 - Publish directory: leave empty for adapter-node
-- Set `DATABASE_URL`, `MASSIVE_API_KEY`, `ORIGIN`, `OIDC_ISSUER`, `OIDC_CLIENT_ID`, and `OIDC_CLIENT_SECRET`; set `OIDC_CLIENT_AUTH_METHOD` only when the provider is not configured for `client_secret_post`
+- Set `DATABASE_URL`, `MASSIVE_API_KEY`, `ORIGIN`, `OIDC_ISSUER`, `OIDC_CLIENT_ID`, and `OIDC_CLIENT_SECRET`.
 - Ensure the PostgreSQL database is provisioned separately and reachable from the app container
 
 If the app is behind a reverse proxy, set `ORIGIN` to the final public HTTPS URL. If the platform requires forwarded headers instead, configure them according to SvelteKit adapter-node hosting rules.
@@ -141,4 +141,3 @@ The build and start commands are handled by `nixpacks.toml`. The runtime is pinn
     - `OIDC_CLIENT_ID` — Confidential client identifier
     - `OIDC_CLIENT_SECRET` — Confidential client secret
   - **Optional**
-    - `OIDC_CLIENT_AUTH_METHOD` — `client_secret_post` (default) or `client_secret_basic`
