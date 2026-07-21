@@ -30,8 +30,8 @@ Required variables are `DATABASE_URL`, `MASSIVE_API_KEY`, `ORIGIN`, `OIDC_ISSUER
 
 Massive Dashboard uses OIDC Authorization Code with PKCE S256 for a confidential provider flow: users authenticate at the provider, return to the callback URL, and the app creates only a server-side opaque app session from the ID token.
 - Public Client: Off
-- Callback URL: `<ORIGIN>/auth/callback`
-- Logout Callback URL: `<ORIGIN>/auth/logged-out`
+- Callback URL: `/auth/callback`
+- Logout Callback URL: `/auth/logged-out`
 - Auth env vars required: `OIDC_ISSUER`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SECRET`, `ORIGIN` (see [Environment](#environment))
 - Auth env vars optional: none
 
