@@ -28,15 +28,14 @@ Required variables are `DATABASE_URL`, `MASSIVE_API_KEY`, `ORIGIN`, `OIDC_ISSUER
 
 ## Authentication Setup
 
-Massive Dashboard is a confidential OIDC web client using Authorization Code flow with one-time server-side state, nonce validation, and PKCE S256. After the callback, it creates an opaque app-local server-side session; the provider's application access policy is the sole admission control for this admin-only dashboard, with no application email, group, subject, identity, or claim allowlist.
-
+Massive Dashboard uses OIDC Authorization Code with PKCE S256 for a confidential provider flow: users authenticate at the provider, return to the callback URL, and the app creates only a server-side opaque app session from the ID token.
 - Public Client: Off
-- Callback path: `/auth/callback`
-- Application logout path: `/auth/logout` (POST)
-- Post-logout path: `/auth/logged-out`
-- Authentication environment: use the required and optional variables listed once under Environment above.
+- Callback URL: `<ORIGIN>/auth/callback`
+- Logout Callback URL: `<ORIGIN>/auth/logged-out`
+- Auth env vars required: `OIDC_ISSUER`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SECRET`, `ORIGIN` (see [Environment](#environment))
+- Auth env vars optional: none
 
-Set `ORIGIN` to the final public HTTPS origin. No production origin is committed; if production uses `https://stocks.example.com`, register callback URL `https://stocks.example.com/auth/callback` and post-logout URL `https://stocks.example.com/auth/logged-out`. Logout uses the provider's advertised RP-Initiated Logout endpoint and the application does not implement back-channel logout.
+Set `ORIGIN` to the final public HTTPS origin. No production origin is committed; if production uses `https://stocks.example.com`, register callback URL `https://stocks.example.com/auth/callback` and post-logout URL `https://stocks.example.com/auth/logged-out`. The application does not implement back-channel logout.
 
 The app requests only the `openid` scope, never requests `offline_access`, and never performs refresh requests. Access and refresh tokens are discarded after the code exchange; only the raw ID token remains in the server-side session, solely as `id_token_hint`, and is deleted with that session. The browser cookie contains only a random opaque token whose hash is stored in PostgreSQL. Sessions have a 24-hour sliding idle timeout extended only by explicit same-origin signals from trusted pointer, keyboard, or click activity—not navigation, probes, polling, prefetch, or passive traffic—and a fixed seven-day absolute lifetime.
 
