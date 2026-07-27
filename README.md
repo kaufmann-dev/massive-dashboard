@@ -28,7 +28,7 @@ Required variables are `DATABASE_URL`, `MASSIVE_API_KEY`, `ORIGIN`, `OIDC_ISSUER
 
 ## Authentication Setup
 
-Massive Dashboard uses OIDC Authorization Code with PKCE S256 for a confidential provider flow: users authenticate at the provider, return to the callback URL, and the app creates only a server-side opaque app session from the ID token.
+Massive Dashboard first presents its own sign-in screen, then starts an OIDC Authorization Code flow with PKCE S256 when the user continues. Users authenticate at the provider, return to the callback URL, and the app creates only a server-side opaque app session from the ID token.
 - Public Client: Off
 - Callback URL: `/auth/callback`
 - Logout Callback URL: `/auth/logged-out`
