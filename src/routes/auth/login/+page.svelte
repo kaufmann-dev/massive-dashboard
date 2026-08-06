@@ -22,5 +22,17 @@
 				<Button type="submit" class="w-full">Continue to sign in</Button>
 			</form>
 		</Card.Content>
+		<Card.Footer class="justify-center">
+			<nav aria-label="Legal" class="text-muted-foreground flex items-center gap-4">
+				<a
+					class="hover:text-foreground focus-visible:ring-ring/30 rounded-sm underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:outline-none"
+					href="https://legal.kaufmann.dev/imprint?site=massive.kaufmann.dev">Imprint</a
+				>
+				<a
+					class="hover:text-foreground focus-visible:ring-ring/30 rounded-sm underline-offset-4 hover:underline focus-visible:ring-2 focus-visible:outline-none"
+					href="https://legal.kaufmann.dev/privacy?site=massive.kaufmann.dev">Privacy</a
+				>
+			</nav>
+		</Card.Footer>
 	</Card.Root>
 </main>
