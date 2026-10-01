@@ -1,22 +1,22 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import CursorPagination from '$lib/components/app/cursor-pagination.svelte';
-	import EconomyChart from '$lib/components/app/economy-chart.svelte';
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import * as Table from '$lib/components/ui/table';
-	import { fmtCompact, fmtDate, fmtDecimal, fmtPrice } from '$lib/format';
-	import { ECONOMY_RANGES, type EconSeries } from '$lib/massive/economy';
-	import { resolveHref } from '$lib/paths';
+	import CursorPagination from '#lib/components/app/cursor-pagination.svelte';
+	import EconomyChart from '#lib/components/app/economy-chart.svelte';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import { Button, buttonVariants } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { fmtCompact, fmtDate, fmtDecimal, fmtPrice } from '#lib/format.js';
+	import { ECONOMY_RANGES, type EconSeries } from '#lib/massive/economy.js';
+	import { resolveHref } from '#lib/paths.js';
 
 	let { data } = $props();
 
 	function rangeHref(range: string) {
-		const url = new URL(page.url);
+		const url = new URL(page.url.href);
 		url.searchParams.set('range', range);
 		return url.pathname + url.search;
 	}
@@ -58,7 +58,7 @@
 				{/each}
 			</div>
 		</div>
-		<div class="text-muted-foreground flex flex-wrap items-center gap-3 text-xs">
+		<div class="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
 			{#each data.rateSeries as s (s.key)}
 				<span class="inline-flex items-center gap-1.5">
 					<span class="size-2 rounded-full" style="background-color: {s.color}"></span>
@@ -71,7 +71,7 @@
 		{#if hasData(data.rateSeries)}
 			<EconomyChart series={data.rateSeries} valueSuffix="%" />
 		{:else}
-			<p class="text-muted-foreground py-16 text-center text-sm">No data for this range.</p>
+			<p class="py-16 text-center text-sm text-muted-foreground">No data for this range.</p>
 		{/if}
 	</Card.Content>
 </Card.Root>
@@ -84,7 +84,7 @@
 		{#if hasData(data.openingsSeries)}
 			<EconomyChart series={data.openingsSeries} />
 		{:else}
-			<p class="text-muted-foreground py-16 text-center text-sm">No data for this range.</p>
+			<p class="py-16 text-center text-sm text-muted-foreground">No data for this range.</p>
 		{/if}
 	</Card.Content>
 </Card.Root>
@@ -139,7 +139,7 @@
 					</Table.Row>
 				{:else}
 					<Table.Row
-						><Table.Cell colspan={5} class="text-muted-foreground text-center"
+						><Table.Cell colspan={5} class="text-center text-muted-foreground"
 							>No records found.</Table.Cell
 						></Table.Row
 					>

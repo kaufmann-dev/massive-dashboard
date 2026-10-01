@@ -1,5 +1,5 @@
-import { extractCursor } from '$lib/server/massive/client';
-import { listDividends } from '$lib/server/massive/endpoints';
+import { extractCursor } from '#lib/server/massive/client.js';
+import { listDividends } from '#lib/server/massive/endpoints.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url }) => {

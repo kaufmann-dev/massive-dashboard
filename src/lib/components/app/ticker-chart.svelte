@@ -11,7 +11,7 @@
 		type SeriesType,
 		type UTCTimestamp
 	} from 'lightweight-charts';
-	import type { ChartPayload } from '$lib/massive/chart';
+	import type { ChartPayload } from '#lib/massive/chart.js';
 
 	let { payload }: { payload: ChartPayload } = $props();
 

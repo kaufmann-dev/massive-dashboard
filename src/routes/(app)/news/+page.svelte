@@ -1,11 +1,11 @@
 <script lang="ts">
-	import CursorPagination from '$lib/components/app/cursor-pagination.svelte';
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import NewsCard from '$lib/components/app/news-card.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
+	import CursorPagination from '#lib/components/app/cursor-pagination.svelte';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import NewsCard from '#lib/components/app/news-card.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
 
 	let { data } = $props();
 </script>
@@ -36,7 +36,7 @@
 </form>
 
 {#if data.articles.length === 0}
-	<p class="text-muted-foreground py-12 text-center text-sm">No news found.</p>
+	<p class="py-12 text-center text-sm text-muted-foreground">No news found.</p>
 {:else}
 	<div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
 		{#each data.articles as article (article.id)}

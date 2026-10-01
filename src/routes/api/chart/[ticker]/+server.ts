@@ -1,4 +1,4 @@
-import { error, json } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import {
 	CHART_RANGES,
 	INDICATOR_RANGES,
@@ -8,10 +8,10 @@ import {
 	type ChartRange,
 	type MacdPoint,
 	type OverlayKey
-} from '$lib/massive/chart';
-import { getCustomBars, getIndicator } from '$lib/server/massive/endpoints';
-import type { IndicatorResponse } from '$lib/massive/types';
-import { isoDate } from '$lib/format';
+} from '#lib/massive/chart.js';
+import { getCustomBars, getIndicator } from '#lib/server/massive/endpoints.js';
+import type { IndicatorResponse } from '#lib/massive/types.js';
+import { isoDate } from '#lib/format.js';
 import type { RequestHandler } from './$types';
 
 interface RangeDef {
@@ -143,5 +143,5 @@ export const GET: RequestHandler = async ({ params, url }) => {
 			: {})
 	};
 
-	return json(payload);
+	return Response.json(payload);
 };

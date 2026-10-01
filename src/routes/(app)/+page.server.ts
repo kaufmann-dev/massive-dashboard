@@ -3,8 +3,8 @@ import {
 	getMarketStatus,
 	getTopMovers,
 	listNews
-} from '$lib/server/massive/endpoints';
-import type { NewsArticle } from '$lib/massive/types';
+} from '#lib/server/massive/endpoints.js';
+import type { NewsArticle } from '#lib/massive/types.js';
 import type { PageServerLoad } from './$types';
 
 // Bulk press releases (e.g. law-firm class-action notices) arrive as dozens of

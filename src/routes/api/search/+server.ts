@@ -1,10 +1,9 @@
-import { json } from '@sveltejs/kit';
-import { listTickers } from '$lib/server/massive/endpoints';
+import { listTickers } from '#lib/server/massive/endpoints.js';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ url }) => {
 	const query = url.searchParams.get('q')?.trim();
-	if (!query) return json({ results: [] });
+	if (!query) return Response.json({ results: [] });
 
 	// `search` only matches company names, so run a ticker-prefix query in
 	// parallel and rank symbol matches first.
@@ -37,5 +36,5 @@ export const GET: RequestHandler = async ({ url }) => {
 		type: ticker.type ?? null
 	}));
 
-	return json({ results });
+	return Response.json({ results });
 };

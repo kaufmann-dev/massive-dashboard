@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { SvelteSet } from 'svelte/reactivity';
-	import * as Table from '$lib/components/ui/table';
-	import { fmtCompact, titleCase } from '$lib/format';
-	import type { FinancialStatementBase } from '$lib/massive/types';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { fmtCompact, titleCase } from '#lib/format.js';
+	import type { FinancialStatementBase } from '#lib/massive/types.js';
 
 	let { statements }: { statements: FinancialStatementBase[] } = $props();
 
@@ -42,7 +42,7 @@
 </script>
 
 {#if periods.length === 0}
-	<p class="text-muted-foreground text-sm">No statement data available.</p>
+	<p class="text-sm text-muted-foreground">No statement data available.</p>
 {:else}
 	<div class="overflow-x-auto">
 		<Table.Root>

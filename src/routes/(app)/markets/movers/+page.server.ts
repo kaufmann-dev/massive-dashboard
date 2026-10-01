@@ -1,4 +1,4 @@
-import { getTopMovers } from '$lib/server/massive/endpoints';
+import { getTopMovers } from '#lib/server/massive/endpoints.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url }) => {

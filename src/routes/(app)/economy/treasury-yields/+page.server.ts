@@ -1,4 +1,4 @@
-import { fmtDate } from '$lib/format';
+import { fmtDate } from '#lib/format.js';
 import {
 	parseRange,
 	rangeStartDate,
@@ -7,10 +7,10 @@ import {
 	TREASURY_SERIES_DEFS,
 	type YieldCurve,
 	type YieldCurvePoint
-} from '$lib/massive/economy';
-import type { TreasuryYieldRecord } from '$lib/massive/types';
-import { extractCursor } from '$lib/server/massive/client';
-import { listTreasuryYields } from '$lib/server/massive/endpoints';
+} from '#lib/massive/economy.js';
+import type { TreasuryYieldRecord } from '#lib/massive/types.js';
+import { extractCursor } from '#lib/server/massive/client.js';
+import { listTreasuryYields } from '#lib/server/massive/endpoints.js';
 import type { PageServerLoad } from './$types';
 
 function curvePoints(row: TreasuryYieldRecord): YieldCurvePoint[] {

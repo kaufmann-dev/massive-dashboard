@@ -46,7 +46,7 @@ import type {
 	Trade,
 	TreasuryYieldRecord,
 	UnifiedSnapshot
-} from '$lib/massive/types';
+} from '#lib/massive/types.js';
 
 const MINUTE = 60_000;
 const HOUR = 3_600_000;

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { TrendingDown, TrendingUp } from '@lucide/svelte';
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import MoversTable from '$lib/components/app/movers-table.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import { buttonVariants } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { resolveHref } from '$lib/paths';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import MoversTable from '#lib/components/app/movers-table.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import { buttonVariants } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { resolveHref } from '#lib/paths.js';
 
 	let { data } = $props();
 

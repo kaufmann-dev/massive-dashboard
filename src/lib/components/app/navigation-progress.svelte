@@ -8,7 +8,7 @@
 		role="status"
 		aria-label="Loading page"
 	>
-		<div class="bg-primary progress-fill h-full"></div>
+		<div class="progress-fill h-full bg-primary"></div>
 	</div>
 {/if}
 

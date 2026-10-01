@@ -1,16 +1,16 @@
 <script lang="ts">
-	import CursorPagination from '$lib/components/app/cursor-pagination.svelte';
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import TickerLink from '$lib/components/app/ticker-link.svelte';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import * as NativeSelect from '$lib/components/ui/native-select';
-	import * as Table from '$lib/components/ui/table';
-	import { fmtDate } from '$lib/format';
+	import CursorPagination from '#lib/components/app/cursor-pagination.svelte';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import TickerLink from '#lib/components/app/ticker-link.svelte';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import * as NativeSelect from '#lib/components/ui/native-select/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { fmtDate } from '#lib/format.js';
 
 	let { data } = $props();
 </script>
@@ -100,7 +100,7 @@
 						<Table.Cell class="font-mono text-xs">{ticker.primary_exchange ?? '–'}</Table.Cell>
 						<Table.Cell class="uppercase">{ticker.currency_name ?? '–'}</Table.Cell>
 						<Table.Cell class="font-mono text-xs">{ticker.cik ?? '–'}</Table.Cell>
-						<Table.Cell class="text-muted-foreground text-xs">
+						<Table.Cell class="text-xs text-muted-foreground">
 							{fmtDate(ticker.last_updated_utc)}
 						</Table.Cell>
 					</Table.Row>

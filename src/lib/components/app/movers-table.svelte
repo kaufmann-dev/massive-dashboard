@@ -1,8 +1,8 @@
 <script lang="ts">
 	import TickerLink from './ticker-link.svelte';
-	import * as Table from '$lib/components/ui/table';
-	import { changeClass, fmtChange, fmtCompact, fmtPercent, fmtPrice } from '$lib/format';
-	import type { SnapshotTicker } from '$lib/massive/types';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { changeClass, fmtChange, fmtCompact, fmtPercent, fmtPrice } from '#lib/format.js';
+	import type { SnapshotTicker } from '#lib/massive/types.js';
 
 	interface Props {
 		tickers: SnapshotTicker[];
@@ -26,7 +26,7 @@
 </script>
 
 {#if tickers.length === 0}
-	<p class="text-muted-foreground px-2 py-6 text-center text-sm">{emptyMessage}</p>
+	<p class="px-2 py-6 text-center text-sm text-muted-foreground">{emptyMessage}</p>
 {:else}
 	<Table.Root>
 		<Table.Header>

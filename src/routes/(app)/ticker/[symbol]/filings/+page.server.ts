@@ -3,8 +3,8 @@ import {
 	listFilingsIndex,
 	listForm4,
 	listRiskFactors
-} from '$lib/server/massive/endpoints';
-import { withRowKeys } from '$lib/format';
+} from '#lib/server/massive/endpoints.js';
+import { withRowKeys } from '#lib/format.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {

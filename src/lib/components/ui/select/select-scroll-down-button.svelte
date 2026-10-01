@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Select as SelectPrimitive } from 'bits-ui';
-	import { cn, type WithoutChildrenOrChild } from '$lib/utils.js';
+	import { cn, type WithoutChildrenOrChild } from '#lib/utils.js';
 	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { ArrowDown01Icon } from '@hugeicons/core-free-icons';
 
@@ -15,7 +15,7 @@
 	bind:ref
 	data-slot="select-scroll-down-button"
 	class={cn(
-		"bg-popover z-10 flex cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-3.5 bottom-0 w-full",
+		"bottom-0 z-10 flex w-full cursor-default items-center justify-center bg-popover py-1 [&_svg:not([class*='size-'])]:size-3.5",
 		className
 	)}
 	{...restProps}

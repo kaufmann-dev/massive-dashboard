@@ -7,7 +7,7 @@
 		type ISeriesApi,
 		type IYieldCurveChartApi
 	} from 'lightweight-charts';
-	import type { YieldCurve } from '$lib/massive/economy';
+	import type { YieldCurve } from '#lib/massive/economy.js';
 
 	let { curves }: { curves: YieldCurve[] } = $props();
 

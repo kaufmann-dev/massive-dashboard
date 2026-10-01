@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn, type WithElementRef } from '$lib/utils.js';
+	import { cn, type WithElementRef } from '#lib/utils.js';
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	let {
@@ -14,7 +14,7 @@
 	bind:this={ref}
 	data-slot="command-shortcut"
 	class={cn(
-		'text-muted-foreground group-data-selected/command-item:text-foreground ml-auto text-[0.625rem] tracking-widest',
+		'ml-auto text-[0.625rem] tracking-widest text-muted-foreground group-data-selected/command-item:text-foreground',
 		className
 	)}
 	{...restProps}

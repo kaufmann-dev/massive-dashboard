@@ -1,9 +1,9 @@
 <script lang="ts">
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import PlanGate from '$lib/components/app/plan-gate.svelte';
-	import * as Card from '$lib/components/ui/card';
-	import * as Table from '$lib/components/ui/table';
-	import { fmtCompact, fmtDateTimeNs, fmtPrice } from '$lib/format';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import PlanGate from '#lib/components/app/plan-gate.svelte';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { fmtCompact, fmtDateTimeNs, fmtPrice } from '#lib/format.js';
 
 	let { data } = $props();
 </script>
@@ -113,13 +113,13 @@
 							<Table.Cell class="text-right tabular-nums">{fmtPrice(trade.price)}</Table.Cell>
 							<Table.Cell class="text-right tabular-nums">{fmtCompact(trade.size)}</Table.Cell>
 							<Table.Cell class="text-right tabular-nums">{trade.exchange ?? '–'}</Table.Cell>
-							<Table.Cell class="text-muted-foreground font-mono text-xs"
+							<Table.Cell class="font-mono text-xs text-muted-foreground"
 								>{(trade.conditions ?? []).join(', ')}</Table.Cell
 							>
 						</Table.Row>
 					{:else}
 						<Table.Row
-							><Table.Cell colspan={5} class="text-muted-foreground text-center"
+							><Table.Cell colspan={5} class="text-center text-muted-foreground"
 								>No trades returned.</Table.Cell
 							></Table.Row
 						>
@@ -167,7 +167,7 @@
 						</Table.Row>
 					{:else}
 						<Table.Row
-							><Table.Cell colspan={5} class="text-muted-foreground text-center"
+							><Table.Cell colspan={5} class="text-center text-muted-foreground"
 								>No quotes returned.</Table.Cell
 							></Table.Row
 						>

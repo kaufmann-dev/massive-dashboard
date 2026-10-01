@@ -1,6 +1,6 @@
-import { extractCursor } from '$lib/server/massive/client';
-import { listThirteenF } from '$lib/server/massive/endpoints';
-import { withRowKeys } from '$lib/format';
+import { extractCursor } from '#lib/server/massive/client.js';
+import { listThirteenF } from '#lib/server/massive/endpoints.js';
+import { withRowKeys } from '#lib/format.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url }) => {

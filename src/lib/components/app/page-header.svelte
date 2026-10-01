@@ -14,7 +14,7 @@
 	<div class="grid gap-1">
 		<h1 class="text-2xl font-semibold tracking-tight">{title}</h1>
 		{#if description}
-			<p class="text-muted-foreground text-sm">{description}</p>
+			<p class="text-sm text-muted-foreground">{description}</p>
 		{/if}
 	</div>
 	{#if children}

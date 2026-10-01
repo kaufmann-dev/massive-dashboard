@@ -1,4 +1,4 @@
-import { listDisclosureCategories, listRiskCategories } from '$lib/server/massive/endpoints';
+import { listDisclosureCategories, listRiskCategories } from '#lib/server/massive/endpoints.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {

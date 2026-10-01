@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn, type WithElementRef } from '$lib/utils.js';
+	import { cn, type WithElementRef } from '#lib/utils.js';
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	let {
@@ -14,7 +14,7 @@
 	bind:this={ref}
 	data-slot="empty-content"
 	class={cn(
-		'gap-2 text-xs/relaxed flex w-full max-w-sm min-w-0 flex-col items-center text-balance',
+		'flex w-full max-w-sm min-w-0 flex-col items-center gap-2 text-xs/relaxed text-balance',
 		className
 	)}
 	{...restProps}

@@ -1,13 +1,13 @@
 <script lang="ts">
-	import AppSidebar from '$lib/components/app/app-sidebar.svelte';
-	import MarketStatusBadge from '$lib/components/app/market-status-badge.svelte';
-	import NavigationProgress from '$lib/components/app/navigation-progress.svelte';
-	import SessionActivity from '$lib/components/app/session-activity.svelte';
-	import ThemeToggle from '$lib/components/app/theme-toggle.svelte';
-	import TickerSearch from '$lib/components/app/ticker-search.svelte';
-	import UserMenu from '$lib/components/app/user-menu.svelte';
-	import { Separator } from '$lib/components/ui/separator';
-	import * as Sidebar from '$lib/components/ui/sidebar';
+	import AppSidebar from '#lib/components/app/app-sidebar.svelte';
+	import MarketStatusBadge from '#lib/components/app/market-status-badge.svelte';
+	import NavigationProgress from '#lib/components/app/navigation-progress.svelte';
+	import SessionActivity from '#lib/components/app/session-activity.svelte';
+	import ThemeToggle from '#lib/components/app/theme-toggle.svelte';
+	import TickerSearch from '#lib/components/app/ticker-search.svelte';
+	import UserMenu from '#lib/components/app/user-menu.svelte';
+	import { Separator } from '#lib/components/ui/separator/index.js';
+	import * as Sidebar from '#lib/components/ui/sidebar/index.js';
 
 	let { data, children } = $props();
 </script>
@@ -18,7 +18,7 @@
 	<AppSidebar />
 	<Sidebar.Inset>
 		<header
-			class="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-10 flex h-14 shrink-0 items-center gap-2 border-b px-4 backdrop-blur"
+			class="sticky top-0 z-10 flex h-14 shrink-0 items-center gap-2 border-b bg-background/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-background/60"
 		>
 			<Sidebar.Trigger class="-ml-1" />
 			<Separator orientation="vertical" class="mr-1 h-5!" />

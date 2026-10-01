@@ -1,20 +1,20 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import TickerChart from '$lib/components/app/ticker-chart.svelte';
-	import TickerLink from '$lib/components/app/ticker-link.svelte';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { Spinner } from '$lib/components/ui/spinner';
-	import { Toggle } from '$lib/components/ui/toggle';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import TickerChart from '#lib/components/app/ticker-chart.svelte';
+	import TickerLink from '#lib/components/app/ticker-link.svelte';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Spinner } from '#lib/components/ui/spinner/index.js';
+	import { Toggle } from '#lib/components/ui/toggle/index.js';
 	import {
 		CHART_RANGES,
 		INDICATOR_RANGES,
 		type ChartPayload,
 		type ChartRange
-	} from '$lib/massive/chart';
-	import { fmtCompact, fmtDate, fmtNumber, fmtPrice, titleCase } from '$lib/format';
+	} from '#lib/massive/chart.js';
+	import { fmtCompact, fmtDate, fmtNumber, fmtPrice, titleCase } from '#lib/format.js';
 
 	let { data } = $props();
 
@@ -103,7 +103,7 @@
 				docs="https://massive.com/docs/rest/stocks/technical-indicators/simple-moving-average"
 			/>
 			{#if !indicatorsAvailable}
-				<span class="text-muted-foreground text-xs">
+				<span class="text-xs text-muted-foreground">
 					Indicators are available on daily/weekly ranges (6M, YTD, 1Y, 5Y).
 				</span>
 			{/if}
@@ -112,12 +112,12 @@
 	<Card.Content>
 		<div class="relative">
 			{#if chart.bars.length === 0}
-				<p class="text-muted-foreground py-16 text-center text-sm">No price data for this range.</p>
+				<p class="py-16 text-center text-sm text-muted-foreground">No price data for this range.</p>
 			{:else}
 				<TickerChart payload={chart} />
 			{/if}
 			{#if loading}
-				<div class="bg-background/50 absolute inset-0 z-10 flex items-center justify-center">
+				<div class="absolute inset-0 z-10 flex items-center justify-center bg-background/50">
 					<Spinner class="size-6" />
 				</div>
 			{/if}
@@ -170,10 +170,10 @@
 					</div>
 				</dl>
 			{:else}
-				<p class="text-muted-foreground text-sm">No daily summary available.</p>
+				<p class="text-sm text-muted-foreground">No daily summary available.</p>
 			{/if}
 			{#if data.previousBar}
-				<p class="text-muted-foreground mt-4 text-xs">
+				<p class="mt-4 text-xs text-muted-foreground">
 					Previous day bar: O {fmtPrice(data.previousBar.o)} · H {fmtPrice(data.previousBar.h)} · L {fmtPrice(
 						data.previousBar.l
 					)} · C {fmtPrice(data.previousBar.c)} · Vol
@@ -200,10 +200,10 @@
 		<Card.Content class="flex flex-wrap gap-2">
 			{#each data.related as related (related.ticker)}
 				<a href={resolve('/(app)/ticker/[symbol]', { symbol: related.ticker })}>
-					<Badge variant="outline" class="hover:bg-accent font-mono">{related.ticker}</Badge>
+					<Badge variant="outline" class="font-mono hover:bg-accent">{related.ticker}</Badge>
 				</a>
 			{:else}
-				<p class="text-muted-foreground text-sm">No related companies found.</p>
+				<p class="text-sm text-muted-foreground">No related companies found.</p>
 			{/each}
 		</Card.Content>
 	</Card.Root>
@@ -309,7 +309,7 @@
 				<ul class="grid gap-1.5 text-sm">
 					{#each data.events as event (`${event.date}-${event.type}-${event.ticker_change?.ticker ?? ''}`)}
 						<li class="flex items-center gap-2">
-							<span class="text-muted-foreground w-28 shrink-0">{fmtDate(event.date)}</span>
+							<span class="w-28 shrink-0 text-muted-foreground">{fmtDate(event.date)}</span>
 							<Badge variant="outline">{titleCase(event.type)}</Badge>
 							{#if event.ticker_change}
 								<span>→ <TickerLink ticker={event.ticker_change.ticker} /></span>

@@ -1,15 +1,22 @@
 <script lang="ts">
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import MoversTable from '$lib/components/app/movers-table.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import TickerLink from '$lib/components/app/ticker-link.svelte';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import * as Table from '$lib/components/ui/table';
-	import { changeClass, fmtChange, fmtCompact, fmtPercent, fmtPrice, titleCase } from '$lib/format';
-	import { resolveHref } from '$lib/paths';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import MoversTable from '#lib/components/app/movers-table.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import TickerLink from '#lib/components/app/ticker-link.svelte';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button, buttonVariants } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import {
+		changeClass,
+		fmtChange,
+		fmtCompact,
+		fmtPercent,
+		fmtPrice,
+		titleCase
+	} from '#lib/format.js';
+	import { resolveHref } from '#lib/paths.js';
 
 	let { data } = $props();
 </script>
@@ -116,7 +123,7 @@
 			</p>
 			<MoversTable tickers={data.fullMarket.topByVolume} />
 		{:else}
-			<p class="text-muted-foreground text-sm">
+			<p class="text-sm text-muted-foreground">
 				The full market snapshot returns the entire US stock market in a single response (several
 				megabytes). Load it on demand.
 			</p>

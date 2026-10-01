@@ -1,13 +1,13 @@
 <script lang="ts">
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import { Badge } from '$lib/components/ui/badge';
-	import { buttonVariants } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import * as Table from '$lib/components/ui/table';
-	import { titleCase } from '$lib/format';
-	import { resolveHref } from '$lib/paths';
-	import { cn } from '$lib/utils';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { buttonVariants } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { titleCase } from '#lib/format.js';
+	import { resolveHref } from '#lib/paths.js';
+	import { cn } from '#lib/utils.js';
 
 	let { data } = $props();
 
@@ -70,7 +70,7 @@
 						<Table.Cell class="text-right tabular-nums">{condition.id}</Table.Cell>
 						<Table.Cell class="font-medium">{condition.name}</Table.Cell>
 						<Table.Cell><Badge variant="outline">{titleCase(condition.type)}</Badge></Table.Cell>
-						<Table.Cell class="text-muted-foreground text-xs">
+						<Table.Cell class="text-xs text-muted-foreground">
 							{(condition.data_types ?? []).join(', ')}
 						</Table.Cell>
 						<Table.Cell class="font-mono text-xs">

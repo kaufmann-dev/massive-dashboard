@@ -1,14 +1,14 @@
 <script lang="ts">
-	import CursorPagination from '$lib/components/app/cursor-pagination.svelte';
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import TickerLink from '$lib/components/app/ticker-link.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import * as Table from '$lib/components/ui/table';
-	import { fmtCompact, fmtDate } from '$lib/format';
+	import CursorPagination from '#lib/components/app/cursor-pagination.svelte';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import TickerLink from '#lib/components/app/ticker-link.svelte';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { fmtCompact, fmtDate } from '#lib/format.js';
 
 	let { data } = $props();
 </script>
@@ -88,7 +88,7 @@
 					</Table.Row>
 				{:else}
 					<Table.Row
-						><Table.Cell colspan={8} class="text-muted-foreground text-center"
+						><Table.Cell colspan={8} class="text-center text-muted-foreground"
 							>No records found.</Table.Cell
 						></Table.Row
 					>

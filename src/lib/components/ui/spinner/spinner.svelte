@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils.js';
+	import { cn } from '#lib/utils.js';
 	import { LoaderCircle } from '@lucide/svelte';
 	import type { ComponentProps } from 'svelte';
 

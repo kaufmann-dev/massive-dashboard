@@ -4,9 +4,9 @@ import {
 	parseRange,
 	rangeStartDate,
 	toSeries
-} from '$lib/massive/economy';
-import { extractCursor } from '$lib/server/massive/client';
-import { listLaborMarket } from '$lib/server/massive/endpoints';
+} from '#lib/massive/economy.js';
+import { extractCursor } from '#lib/server/massive/client.js';
+import { listLaborMarket } from '#lib/server/massive/endpoints.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url }) => {

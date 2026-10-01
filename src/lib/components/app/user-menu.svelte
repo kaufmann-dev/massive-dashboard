@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { LogOut } from '@lucide/svelte';
-	import * as Avatar from '$lib/components/ui/avatar';
-	import { Button } from '$lib/components/ui/button';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+	import * as Avatar from '#lib/components/ui/avatar/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import * as DropdownMenu from '#lib/components/ui/dropdown-menu/index.js';
 </script>
 
 <DropdownMenu.Root>
@@ -22,8 +22,8 @@
 					<Avatar.Fallback>A</Avatar.Fallback>
 				</Avatar.Root>
 				<div class="grid min-w-0 flex-1 leading-tight">
-					<span class="text-foreground truncate font-medium">Administrator</span>
-					<span class="text-muted-foreground truncate text-xs">OIDC session</span>
+					<span class="truncate font-medium text-foreground">Administrator</span>
+					<span class="truncate text-xs text-muted-foreground">OIDC session</span>
 				</div>
 			</div>
 		</DropdownMenu.Label>

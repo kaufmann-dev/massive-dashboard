@@ -1,4 +1,4 @@
-import { entitled } from '$lib/server/massive/client';
+import { entitled } from '#lib/server/massive/client.js';
 import {
 	listBalanceSheets,
 	listCashFlowStatements,
@@ -7,7 +7,7 @@ import {
 	listRatios,
 	listShortInterest,
 	listShortVolume
-} from '$lib/server/massive/endpoints';
+} from '#lib/server/massive/endpoints.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {

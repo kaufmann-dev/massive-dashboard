@@ -1,5 +1,5 @@
-import { env } from '$env/dynamic/private';
-import type { Entitled } from '$lib/massive/types';
+import { MASSIVE_API_KEY } from '$app/env/private';
+import type { Entitled } from '#lib/massive/types.js';
 
 const BASE_URL = 'https://api.massive.com';
 
@@ -77,7 +77,7 @@ function buildUrl(path: string, query: Query): string {
 const RETRYABLE_STATUSES = new Set([502, 503, 504]);
 
 async function request<T>(url: string, endpoint: string, attempt = 0): Promise<T> {
-	const apiKey = env.MASSIVE_API_KEY;
+	const apiKey = MASSIVE_API_KEY;
 	if (!apiKey) {
 		throw new MassiveApiError(
 			'MASSIVE_API_KEY is not configured. Set it in your environment variables.',
@@ -153,7 +153,7 @@ export function extractCursor(nextUrl: string | undefined): string | undefined {
 
 /** Fetches a Massive-hosted asset (e.g. company branding image) server-side. */
 export async function fetchAsset(url: string): Promise<Response> {
-	const apiKey = env.MASSIVE_API_KEY;
+	const apiKey = MASSIVE_API_KEY;
 	const parsed = new URL(url);
 	const allowedHosts = ['api.massive.com', 'api.polygon.io'];
 	if (!allowedHosts.includes(parsed.hostname)) {

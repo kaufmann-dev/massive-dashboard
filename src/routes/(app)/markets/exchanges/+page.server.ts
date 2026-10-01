@@ -1,4 +1,4 @@
-import { listExchanges } from '$lib/server/massive/endpoints';
+import { listExchanges } from '#lib/server/massive/endpoints.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
