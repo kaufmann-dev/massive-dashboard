@@ -1,4 +1,4 @@
-import type { Icon } from '@lucide/svelte';
+import type { LucideIcon } from '@lucide/svelte';
 import {
 	Activity,
 	BookOpenText,
@@ -34,7 +34,7 @@ import {
 export interface NavItem {
 	title: string;
 	href: string;
-	icon: typeof Icon;
+	icon: LucideIcon;
 }
 
 export interface NavGroup {
