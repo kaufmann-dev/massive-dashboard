@@ -106,7 +106,7 @@ The server startup hook runs Drizzle migrations before handling requests. You ca
 For Coolify/Nixpacks deployments:
 
 - Base directory: repository root
-- Build command: `pnpm build`
+- Install and build commands: leave empty; `nixpacks.toml` runs the pinned pnpm 11.18.0 (`packageManager`) because Nixpacks' bundled pnpm 9 cannot read the workspace overrides
 - Start command: `node build`
 - Publish directory: leave empty for adapter-node
 - Set `DATABASE_URL`, `MASSIVE_API_KEY`, `ORIGIN`, `OIDC_ISSUER`, `OIDC_CLIENT_ID`, and `OIDC_CLIENT_SECRET`.
