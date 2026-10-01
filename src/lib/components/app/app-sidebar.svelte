@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import * as Sidebar from '$lib/components/ui/sidebar';
+	import * as Sidebar from '#lib/components/ui/sidebar/index.js';
 	import Logo from './logo.svelte';
-	import { resolveHref } from '$lib/paths';
+	import { resolveHref } from '#lib/paths.js';
 	import { navGroups } from './nav';
 
 	const sidebar = Sidebar.useSidebar();
@@ -23,11 +23,11 @@
 			<Sidebar.MenuItem>
 				<Sidebar.MenuButton size="lg">
 					{#snippet child({ props })}
-						<a href={resolve('/')} {...props} onclick={closeMobileSidebar}>
-							<Logo class="text-foreground size-7! shrink-0" />
+						<a href={resolve('/(app)')} {...props} onclick={closeMobileSidebar}>
+							<Logo class="size-7! shrink-0 text-foreground" />
 							<div class="grid flex-1 text-left text-sm leading-tight">
 								<span class="truncate font-semibold">Massive Dashboard</span>
-								<span class="text-muted-foreground truncate text-xs">US Stocks · Starter</span>
+								<span class="truncate text-xs text-muted-foreground">US Stocks · Starter</span>
 							</div>
 						</a>
 					{/snippet}
@@ -59,7 +59,7 @@
 		{/each}
 	</Sidebar.Content>
 	<Sidebar.Footer>
-		<p class="text-muted-foreground px-2 pb-1 text-xs">
+		<p class="px-2 pb-1 text-xs text-muted-foreground">
 			Data by <a
 				href="https://massive.com"
 				target="_blank"

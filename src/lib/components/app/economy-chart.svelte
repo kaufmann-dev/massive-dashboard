@@ -9,7 +9,7 @@
 		type SeriesType,
 		type Time
 	} from 'lightweight-charts';
-	import type { EconSeries } from '$lib/massive/economy';
+	import type { EconSeries } from '#lib/massive/economy.js';
 
 	let { series, valueSuffix = '' }: { series: EconSeries[]; valueSuffix?: string } = $props();
 

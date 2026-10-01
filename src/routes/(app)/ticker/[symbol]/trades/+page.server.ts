@@ -1,5 +1,10 @@
-import { entitled } from '$lib/server/massive/client';
-import { getLastQuote, getLastTrade, listQuotes, listTrades } from '$lib/server/massive/endpoints';
+import { entitled } from '#lib/server/massive/client.js';
+import {
+	getLastQuote,
+	getLastTrade,
+	listQuotes,
+	listTrades
+} from '#lib/server/massive/endpoints.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {

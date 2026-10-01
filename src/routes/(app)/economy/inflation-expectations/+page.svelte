@@ -1,18 +1,18 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import CursorPagination from '$lib/components/app/cursor-pagination.svelte';
-	import EconomyChart from '$lib/components/app/economy-chart.svelte';
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import * as Table from '$lib/components/ui/table';
-	import { Toggle } from '$lib/components/ui/toggle';
-	import { fmtDate, fmtDecimal } from '$lib/format';
-	import { ECONOMY_RANGES, EXPECTATION_DEFS } from '$lib/massive/economy';
-	import { resolveHref } from '$lib/paths';
+	import CursorPagination from '#lib/components/app/cursor-pagination.svelte';
+	import EconomyChart from '#lib/components/app/economy-chart.svelte';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import { Button, buttonVariants } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { Toggle } from '#lib/components/ui/toggle/index.js';
+	import { fmtDate, fmtDecimal } from '#lib/format.js';
+	import { ECONOMY_RANGES, EXPECTATION_DEFS } from '#lib/massive/economy.js';
+	import { resolveHref } from '#lib/paths.js';
 
 	let { data } = $props();
 
@@ -26,7 +26,7 @@
 	const hasChartData = $derived(visibleSeries.some((s) => s.points.length > 0));
 
 	function rangeHref(range: string) {
-		const url = new URL(page.url);
+		const url = new URL(page.url.href);
 		url.searchParams.set('range', range);
 		return url.pathname + url.search;
 	}
@@ -82,7 +82,7 @@
 		{#if hasChartData}
 			<EconomyChart series={visibleSeries} valueSuffix="%" />
 		{:else}
-			<p class="text-muted-foreground py-16 text-center text-sm">No data for this range.</p>
+			<p class="py-16 text-center text-sm text-muted-foreground">No data for this range.</p>
 		{/if}
 	</Card.Content>
 </Card.Root>
@@ -125,7 +125,7 @@
 					</Table.Row>
 				{:else}
 					<Table.Row
-						><Table.Cell colspan={8} class="text-muted-foreground text-center"
+						><Table.Cell colspan={8} class="text-center text-muted-foreground"
 							>No records found.</Table.Cell
 						></Table.Row
 					>

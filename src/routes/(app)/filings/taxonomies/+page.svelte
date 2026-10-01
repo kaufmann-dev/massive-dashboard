@@ -1,10 +1,10 @@
 <script lang="ts">
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import * as Card from '$lib/components/ui/card';
-	import * as Table from '$lib/components/ui/table';
-	import * as Tabs from '$lib/components/ui/tabs';
-	import type { TaxonomyCategory } from '$lib/massive/types';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import * as Tabs from '#lib/components/ui/tabs/index.js';
+	import type { TaxonomyCategory } from '#lib/massive/types.js';
 
 	let { data } = $props();
 
@@ -58,7 +58,7 @@
 								<Table.Cell class="whitespace-nowrap"
 									>{category.tertiary_category ?? '–'}</Table.Cell
 								>
-								<Table.Cell class="text-muted-foreground max-w-xl text-xs"
+								<Table.Cell class="max-w-xl text-xs text-muted-foreground"
 									>{category.description ?? ''}</Table.Cell
 								>
 							</Table.Row>
@@ -95,7 +95,7 @@
 								<Table.Cell class="whitespace-nowrap"
 									>{category.tertiary_category ?? '–'}</Table.Cell
 								>
-								<Table.Cell class="text-muted-foreground max-w-xl text-xs"
+								<Table.Cell class="max-w-xl text-xs text-muted-foreground"
 									>{category.description ?? ''}</Table.Cell
 								>
 							</Table.Row>

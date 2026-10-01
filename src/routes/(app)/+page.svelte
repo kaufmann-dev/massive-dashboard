@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { CalendarDays, Clock, Landmark, TrendingDown, TrendingUp } from '@lucide/svelte';
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import MoversTable from '$lib/components/app/movers-table.svelte';
-	import NewsCard from '$lib/components/app/news-card.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import { Badge } from '$lib/components/ui/badge';
-	import { buttonVariants } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { fmtDate, titleCase } from '$lib/format';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import MoversTable from '#lib/components/app/movers-table.svelte';
+	import NewsCard from '#lib/components/app/news-card.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { buttonVariants } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { fmtDate, titleCase } from '#lib/format.js';
 
 	let { data } = $props();
 
@@ -32,7 +32,7 @@
 			>
 			<Card.Title class="text-2xl capitalize">{data.status.market.replace('-', ' ')}</Card.Title>
 		</Card.Header>
-		<Card.Content class="text-muted-foreground grid gap-1 text-sm">
+		<Card.Content class="grid gap-1 text-sm text-muted-foreground">
 			<span>Server time: {new Date(data.status.serverTime).toLocaleString('en-US')}</span>
 			<span>
 				{data.status.earlyHours ? 'Pre-market session' : ''}
@@ -66,7 +66,7 @@
 			>
 			<Card.Title class="text-2xl">{nextHoliday ? nextHoliday.name : 'None upcoming'}</Card.Title>
 		</Card.Header>
-		<Card.Content class="text-muted-foreground grid gap-1 text-sm">
+		<Card.Content class="grid gap-1 text-sm text-muted-foreground">
 			{#if nextHoliday}
 				<span
 					>{fmtDate(nextHoliday.date)} · {nextHoliday.exchange} · {titleCase(
@@ -75,8 +75,8 @@
 				>
 			{/if}
 			<a
-				href={resolve('/markets/status')}
-				class="text-foreground text-sm font-medium hover:underline">All holidays →</a
+				href={resolve('markets/status')}
+				class="text-sm font-medium text-foreground hover:underline">All holidays →</a
 			>
 		</Card.Content>
 	</Card.Root>
@@ -88,7 +88,8 @@
 			<Card.Title class="flex items-center gap-2">
 				<TrendingUp class="size-4 text-green-600 dark:text-green-500" /> Top gainers
 			</Card.Title>
-			<a href={resolve('/markets/movers')} class={buttonVariants({ variant: 'ghost', size: 'sm' })}
+
+			<a href={resolve('markets/movers')} class={buttonVariants({ variant: 'ghost', size: 'sm' })}
 				>View all</a
 			>
 		</Card.Header>
@@ -101,7 +102,8 @@
 			<Card.Title class="flex items-center gap-2">
 				<TrendingDown class="size-4 text-red-600 dark:text-red-500" /> Top losers
 			</Card.Title>
-			<a href={resolve('/markets/movers')} class={buttonVariants({ variant: 'ghost', size: 'sm' })}
+
+			<a href={resolve('markets/movers')} class={buttonVariants({ variant: 'ghost', size: 'sm' })}
 				>View all</a
 			>
 		</Card.Header>
@@ -114,7 +116,8 @@
 <div class="grid gap-2">
 	<div class="flex items-center justify-between">
 		<h2 class="text-lg font-semibold">Latest market news</h2>
-		<a href={resolve('/news')} class={buttonVariants({ variant: 'ghost', size: 'sm' })}>All news</a>
+
+		<a href={resolve('news')} class={buttonVariants({ variant: 'ghost', size: 'sm' })}>All news</a>
 	</div>
 	<div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
 		{#each data.news as article (article.id)}

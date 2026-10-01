@@ -1,6 +1,6 @@
 // Shared contract between the economy load functions, pages, and chart components.
 
-import { isoDate } from '$lib/format';
+import { isoDate } from '#lib/format.js';
 import type {
 	InflationExpectationRecord,
 	InflationRecord,

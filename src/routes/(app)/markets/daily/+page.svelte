@@ -1,14 +1,14 @@
 <script lang="ts">
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import TickerLink from '$lib/components/app/ticker-link.svelte';
-	import { Button } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { Checkbox } from '$lib/components/ui/checkbox';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import * as Table from '$lib/components/ui/table';
-	import { changeClass, fmtCompact, fmtNumber, fmtPercent, fmtPrice } from '$lib/format';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import TickerLink from '#lib/components/app/ticker-link.svelte';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Checkbox } from '#lib/components/ui/checkbox/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { changeClass, fmtCompact, fmtNumber, fmtPercent, fmtPrice } from '#lib/format.js';
 
 	let { data } = $props();
 
@@ -55,7 +55,7 @@
 	<Card.Root>
 		<Card.Header>
 			<Card.Description>Advancers</Card.Description>
-			<Card.Title class="text-2xl tabular-nums text-green-600 dark:text-green-500">
+			<Card.Title class="text-2xl text-green-600 tabular-nums dark:text-green-500">
 				{fmtNumber(data.advancers)}
 			</Card.Title>
 		</Card.Header>
@@ -63,7 +63,7 @@
 	<Card.Root>
 		<Card.Header>
 			<Card.Description>Decliners</Card.Description>
-			<Card.Title class="text-2xl tabular-nums text-red-600 dark:text-red-500">
+			<Card.Title class="text-2xl text-red-600 tabular-nums dark:text-red-500">
 				{fmtNumber(data.decliners)}
 			</Card.Title>
 		</Card.Header>
@@ -101,7 +101,7 @@
 					<Table.Row>
 						<Table.Cell>
 							{#if bar.T}<TickerLink ticker={bar.T} />{/if}
-							{#if bar.otc}<span class="text-muted-foreground ml-1 text-xs">OTC</span>{/if}
+							{#if bar.otc}<span class="ml-1 text-xs text-muted-foreground">OTC</span>{/if}
 						</Table.Cell>
 						<Table.Cell class="text-right tabular-nums">{fmtPrice(bar.o)}</Table.Cell>
 						<Table.Cell class="text-right tabular-nums">{fmtPrice(bar.h)}</Table.Cell>

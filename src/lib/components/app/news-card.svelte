@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { ExternalLink } from '@lucide/svelte';
-	import { Badge } from '$lib/components/ui/badge';
-	import * as Card from '$lib/components/ui/card';
-	import { fmtDate } from '$lib/format';
-	import type { NewsArticle } from '$lib/massive/types';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { fmtDate } from '#lib/format.js';
+	import type { NewsArticle } from '#lib/massive/types.js';
 
 	let { article }: { article: NewsArticle } = $props();
 
@@ -35,7 +35,7 @@
 	</Card.Header>
 	<Card.Content class="grid gap-3">
 		{#if article.description}
-			<p class="text-muted-foreground line-clamp-3 text-sm">{article.description}</p>
+			<p class="line-clamp-3 text-sm text-muted-foreground">{article.description}</p>
 		{/if}
 		{#if article.insights?.length}
 			<div class="flex flex-wrap gap-1.5">

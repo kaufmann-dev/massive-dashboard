@@ -1,10 +1,10 @@
 <script lang="ts">
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import PlanGate from '$lib/components/app/plan-gate.svelte';
-	import StatementTable from '$lib/components/app/statement-table.svelte';
-	import * as Card from '$lib/components/ui/card';
-	import * as Table from '$lib/components/ui/table';
-	import { fmtCompact, fmtDate, fmtNumber, fmtPercent, fmtPrice } from '$lib/format';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import PlanGate from '#lib/components/app/plan-gate.svelte';
+	import StatementTable from '#lib/components/app/statement-table.svelte';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { fmtCompact, fmtDate, fmtNumber, fmtPercent, fmtPrice } from '#lib/format.js';
 
 	let { data } = $props();
 
@@ -44,7 +44,7 @@
 					</div>
 				</dl>
 			{:else}
-				<p class="text-muted-foreground text-sm">No float data available.</p>
+				<p class="text-sm text-muted-foreground">No float data available.</p>
 			{/if}
 		</Card.Content>
 	</Card.Root>
@@ -102,7 +102,7 @@
 					</div>
 				</dl>
 			{:else}
-				<p class="text-muted-foreground text-sm">No ratio data available.</p>
+				<p class="text-sm text-muted-foreground">No ratio data available.</p>
 			{/if}
 		</Card.Content>
 	</Card.Root>
@@ -146,7 +146,7 @@
 						</Table.Row>
 					{:else}
 						<Table.Row
-							><Table.Cell colspan={4} class="text-muted-foreground text-center"
+							><Table.Cell colspan={4} class="text-center text-muted-foreground"
 								>No data.</Table.Cell
 							></Table.Row
 						>
@@ -195,7 +195,7 @@
 						</Table.Row>
 					{:else}
 						<Table.Row
-							><Table.Cell colspan={4} class="text-muted-foreground text-center"
+							><Table.Cell colspan={4} class="text-center text-muted-foreground"
 								>No data.</Table.Cell
 							></Table.Row
 						>

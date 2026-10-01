@@ -1,6 +1,6 @@
-import { getDailyMarketSummary } from '$lib/server/massive/endpoints';
-import { lastBusinessDay } from '$lib/format';
-import type { AggregatesResponse } from '$lib/massive/types';
+import { getDailyMarketSummary } from '#lib/server/massive/endpoints.js';
+import { lastBusinessDay } from '#lib/format.js';
+import type { AggregatesResponse } from '#lib/massive/types.js';
 import type { PageServerLoad } from './$types';
 
 function previousBusinessDay(iso: string): string {

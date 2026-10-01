@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { Badge } from '$lib/components/ui/badge';
-	import { buttonVariants } from '$lib/components/ui/button';
-	import { changeClass, fmtChange, fmtCompact, fmtPercent, fmtPrice } from '$lib/format';
-	import { resolveHref } from '$lib/paths';
-	import { cn } from '$lib/utils';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { buttonVariants } from '#lib/components/ui/button/index.js';
+	import { changeClass, fmtChange, fmtCompact, fmtPercent, fmtPrice } from '#lib/format.js';
+	import { resolveHref } from '#lib/paths.js';
+	import { cn } from '#lib/utils.js';
 
 	let { data, children } = $props();
 
@@ -39,11 +39,11 @@
 		<img
 			src="/api/branding?url={encodeURIComponent(data.overview.branding.icon_url)}"
 			alt=""
-			class="bg-muted size-12 rounded-lg object-contain p-1"
+			class="size-12 rounded-lg bg-muted object-contain p-1"
 		/>
 	{:else}
 		<div
-			class="bg-muted text-muted-foreground flex size-12 items-center justify-center rounded-lg font-mono text-sm font-bold"
+			class="flex size-12 items-center justify-center rounded-lg bg-muted font-mono text-sm font-bold text-muted-foreground"
 		>
 			{data.symbol.slice(0, 3)}
 		</div>
@@ -70,11 +70,11 @@
 				</span>
 			{/if}
 			{#if data.overview.market_cap}
-				<span class="text-muted-foreground text-sm">
+				<span class="text-sm text-muted-foreground">
 					Market cap {fmtCompact(data.overview.market_cap)}
 				</span>
 			{/if}
-			<span class="text-muted-foreground text-xs">15-minute delayed</span>
+			<span class="text-xs text-muted-foreground">15-minute delayed</span>
 		</div>
 	</div>
 </div>

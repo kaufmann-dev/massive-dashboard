@@ -1,4 +1,4 @@
-import { listConditions } from '$lib/server/massive/endpoints';
+import { listConditions } from '#lib/server/massive/endpoints.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url }) => {

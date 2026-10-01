@@ -1,5 +1,5 @@
-import { getFullMarketSnapshot, listUnifiedSnapshots } from '$lib/server/massive/endpoints';
-import type { FullMarketSnapshotResponse } from '$lib/massive/types';
+import { getFullMarketSnapshot, listUnifiedSnapshots } from '#lib/server/massive/endpoints.js';
+import type { FullMarketSnapshotResponse } from '#lib/massive/types.js';
 import type { PageServerLoad } from './$types';
 
 const DEFAULT_TICKERS = 'AAPL,MSFT,NVDA,AMZN,GOOGL,META,TSLA,BRK.B,JPM,V,UNH,XOM';

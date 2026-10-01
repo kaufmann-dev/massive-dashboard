@@ -112,7 +112,7 @@ For Coolify/Nixpacks deployments:
 - Set `DATABASE_URL`, `MASSIVE_API_KEY`, `ORIGIN`, `OIDC_ISSUER`, `OIDC_CLIENT_ID`, and `OIDC_CLIENT_SECRET`.
 - Ensure the PostgreSQL database is provisioned separately and reachable from the app container
 
-If the app is behind a reverse proxy, set `ORIGIN` to the final public HTTPS URL. If the platform requires forwarded headers instead, configure them according to SvelteKit adapter-node hosting rules.
+Set `ORIGIN` to the final public HTTPS URL and keep it available at build time (Coolify's default): the build embeds it as SvelteKit's `paths.origin`, which CSRF checks use behind the reverse proxy.
 
 ## Verification
 

@@ -1,17 +1,17 @@
 <script lang="ts">
 	import { ExternalLink } from '@lucide/svelte';
-	import CursorPagination from '$lib/components/app/cursor-pagination.svelte';
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import TickerLink from '$lib/components/app/ticker-link.svelte';
-	import * as Accordion from '$lib/components/ui/accordion';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import { fmtDate } from '$lib/format';
-	import { resolveHref } from '$lib/paths';
+	import CursorPagination from '#lib/components/app/cursor-pagination.svelte';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import TickerLink from '#lib/components/app/ticker-link.svelte';
+	import * as Accordion from '#lib/components/ui/accordion/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button, buttonVariants } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import { fmtDate } from '#lib/format.js';
+	import { resolveHref } from '#lib/paths.js';
 
 	let { data } = $props();
 
@@ -83,7 +83,7 @@
 			{#each data.disclosures as disclosure (disclosure.rowKey)}
 				<div class="grid gap-1 border-b pb-3 text-sm last:border-b-0">
 					<div class="flex flex-wrap items-center gap-2">
-						<span class="text-muted-foreground whitespace-nowrap"
+						<span class="whitespace-nowrap text-muted-foreground"
 							>{fmtDate(disclosure.filing_date)}</span
 						>
 						{#each disclosure.tickers ?? [] as ticker (ticker)}
@@ -102,17 +102,17 @@
 							href={disclosure.filing_url}
 							target="_blank"
 							rel="noreferrer"
-							class="text-muted-foreground hover:text-foreground ml-auto"
+							class="ml-auto text-muted-foreground hover:text-foreground"
 						>
 							<ExternalLink class="size-3.5" />
 						</a>
 					</div>
 					{#if disclosure.supporting_text}
-						<p class="text-muted-foreground line-clamp-2">{disclosure.supporting_text}</p>
+						<p class="line-clamp-2 text-muted-foreground">{disclosure.supporting_text}</p>
 					{/if}
 				</div>
 			{:else}
-				<p class="text-muted-foreground py-8 text-center text-sm">No disclosures found.</p>
+				<p class="py-8 text-center text-sm text-muted-foreground">No disclosures found.</p>
 			{/each}
 			<CursorPagination nextCursor={data.nextCursor} />
 		</Card.Content>
@@ -128,7 +128,7 @@
 								<span class="text-muted-foreground">{fmtDate(text.filing_date)}</span>
 								{#if text.ticker}<span class="font-mono font-semibold">{text.ticker}</span>{/if}
 								<Badge variant="outline" class="font-mono">{text.form_type}</Badge>
-								<span class="text-muted-foreground font-mono text-xs">{text.accession_number}</span>
+								<span class="font-mono text-xs text-muted-foreground">{text.accession_number}</span>
 							</span>
 						</Accordion.Trigger>
 						<Accordion.Content>
@@ -142,7 +142,7 @@
 									View on SEC EDGAR <ExternalLink class="size-3" />
 								</a>
 								<p
-									class="text-muted-foreground max-h-96 overflow-y-auto text-sm whitespace-pre-line"
+									class="max-h-96 overflow-y-auto text-sm whitespace-pre-line text-muted-foreground"
 								>
 									{text.items_text}
 								</p>
@@ -150,7 +150,7 @@
 						</Accordion.Content>
 					</Accordion.Item>
 				{:else}
-					<p class="text-muted-foreground py-8 text-center text-sm">No 8-K text found.</p>
+					<p class="py-8 text-center text-sm text-muted-foreground">No 8-K text found.</p>
 				{/each}
 			</Accordion.Root>
 			<CursorPagination nextCursor={data.nextCursor} />

@@ -1,19 +1,19 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import CursorPagination from '$lib/components/app/cursor-pagination.svelte';
-	import EconomyChart from '$lib/components/app/economy-chart.svelte';
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import YieldCurveChart from '$lib/components/app/yield-curve-chart.svelte';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import * as Table from '$lib/components/ui/table';
-	import { Toggle } from '$lib/components/ui/toggle';
-	import { fmtDate, fmtDecimal } from '$lib/format';
-	import { ECONOMY_RANGES, TREASURY_MATURITIES } from '$lib/massive/economy';
-	import { resolveHref } from '$lib/paths';
+	import CursorPagination from '#lib/components/app/cursor-pagination.svelte';
+	import EconomyChart from '#lib/components/app/economy-chart.svelte';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import YieldCurveChart from '#lib/components/app/yield-curve-chart.svelte';
+	import { Button, buttonVariants } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { Toggle } from '#lib/components/ui/toggle/index.js';
+	import { fmtDate, fmtDecimal } from '#lib/format.js';
+	import { ECONOMY_RANGES, TREASURY_MATURITIES } from '#lib/massive/economy.js';
+	import { resolveHref } from '#lib/paths.js';
 
 	let { data } = $props();
 
@@ -28,7 +28,7 @@
 	const hasChartData = $derived(visibleSeries.some((s) => s.points.length > 0));
 
 	function rangeHref(range: string) {
-		const url = new URL(page.url);
+		const url = new URL(page.url.href);
 		url.searchParams.set('range', range);
 		return url.pathname + url.search;
 	}
@@ -84,7 +84,7 @@
 		{#if hasChartData}
 			<EconomyChart series={visibleSeries} valueSuffix="%" />
 		{:else}
-			<p class="text-muted-foreground py-16 text-center text-sm">No data for this range.</p>
+			<p class="py-16 text-center text-sm text-muted-foreground">No data for this range.</p>
 		{/if}
 	</Card.Content>
 </Card.Root>
@@ -94,7 +94,7 @@
 		<Card.Header class="gap-3">
 			<div class="flex flex-wrap items-center justify-between gap-3">
 				<Card.Title>Yield curve</Card.Title>
-				<div class="text-muted-foreground flex flex-wrap items-center gap-3 text-xs">
+				<div class="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
 					{#each data.curves as curve (curve.label)}
 						<span class="inline-flex items-center gap-1.5">
 							<span class="size-2 rounded-full" style="background-color: {curve.color}"></span>
@@ -150,7 +150,7 @@
 					</Table.Row>
 				{:else}
 					<Table.Row
-						><Table.Cell colspan={12} class="text-muted-foreground text-center"
+						><Table.Cell colspan={12} class="text-center text-muted-foreground"
 							>No records found.</Table.Cell
 						></Table.Row
 					>

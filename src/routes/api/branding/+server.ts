@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { fetchAsset } from '$lib/server/massive/client';
+import { fetchAsset } from '#lib/server/massive/client.js';
 import type { RequestHandler } from './$types';
 
 /**

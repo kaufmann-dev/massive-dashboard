@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
-	import { cn, type WithElementRef, type WithoutChildren } from '$lib/utils.js';
+	import { cn, type WithElementRef, type WithoutChildren } from '#lib/utils.js';
 	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { MoreHorizontalCircle01Icon } from '@hugeicons/core-free-icons';
 
@@ -16,7 +16,7 @@
 	data-slot="breadcrumb-ellipsis"
 	role="presentation"
 	aria-hidden="true"
-	class={cn('size-4 [&>svg]:size-3.5 flex items-center justify-center', className)}
+	class={cn('flex size-4 items-center justify-center [&>svg]:size-3.5', className)}
 	{...restProps}
 >
 	<HugeiconsIcon icon={MoreHorizontalCircle01Icon} strokeWidth={2} />

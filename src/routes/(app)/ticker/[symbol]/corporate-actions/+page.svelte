@@ -1,9 +1,9 @@
 <script lang="ts">
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import { Badge } from '$lib/components/ui/badge';
-	import * as Card from '$lib/components/ui/card';
-	import * as Table from '$lib/components/ui/table';
-	import { fmtCompact, fmtDate, fmtPrice, titleCase } from '$lib/format';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { fmtCompact, fmtDate, fmtPrice, titleCase } from '#lib/format.js';
 
 	let { data } = $props();
 
@@ -61,7 +61,7 @@
 						</Table.Row>
 					{:else}
 						<Table.Row>
-							<Table.Cell colspan={6} class="text-muted-foreground text-center"
+							<Table.Cell colspan={6} class="text-center text-muted-foreground"
 								>No dividends recorded.</Table.Cell
 							>
 						</Table.Row>
@@ -106,7 +106,7 @@
 							</Table.Row>
 						{:else}
 							<Table.Row>
-								<Table.Cell colspan={3} class="text-muted-foreground text-center"
+								<Table.Cell colspan={3} class="text-center text-muted-foreground"
 									>No splits recorded.</Table.Cell
 								>
 							</Table.Row>
@@ -155,7 +155,7 @@
 						</div>
 					</dl>
 				{:else}
-					<p class="text-muted-foreground text-sm">No IPO records for this ticker.</p>
+					<p class="text-sm text-muted-foreground">No IPO records for this ticker.</p>
 				{/each}
 			</Card.Content>
 		</Card.Root>

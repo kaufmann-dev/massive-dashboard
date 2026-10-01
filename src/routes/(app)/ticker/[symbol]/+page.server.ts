@@ -2,9 +2,9 @@ import {
 	getDailyTickerSummary,
 	getRelatedTickers,
 	getTickerEvents
-} from '$lib/server/massive/endpoints';
-import type { ChartPayload } from '$lib/massive/chart';
-import type { DailyOpenClose } from '$lib/massive/types';
+} from '#lib/server/massive/endpoints.js';
+import type { ChartPayload } from '#lib/massive/chart.js';
+import type { DailyOpenClose } from '#lib/massive/types.js';
 import type { PageServerLoad } from './$types';
 
 // Walks back over recent business days so market holidays (which have no

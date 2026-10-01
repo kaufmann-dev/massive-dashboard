@@ -1,21 +1,21 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { ArrowRight, RotateCcw } from '@lucide/svelte';
-	import { buttonVariants } from '$lib/components/ui/button';
-	import { resolveHref } from '$lib/paths';
+	import { buttonVariants } from '#lib/components/ui/button/index.js';
+	import { resolveHref } from '#lib/paths.js';
 
 	let { nextCursor }: { nextCursor?: string } = $props();
 
 	const nextHref = $derived.by(() => {
 		if (!nextCursor) return null;
-		const url = new URL(page.url);
+		const url = new URL(page.url.href);
 		url.searchParams.set('cursor', nextCursor);
 		return url.pathname + url.search;
 	});
 
 	const resetHref = $derived.by(() => {
 		if (!page.url.searchParams.has('cursor')) return null;
-		const url = new URL(page.url);
+		const url = new URL(page.url.href);
 		url.searchParams.delete('cursor');
 		return url.pathname + url.search;
 	});

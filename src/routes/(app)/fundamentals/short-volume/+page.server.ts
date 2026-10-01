@@ -1,6 +1,6 @@
-import { extractCursor } from '$lib/server/massive/client';
-import { listShortVolume } from '$lib/server/massive/endpoints';
-import { lastBusinessDay } from '$lib/format';
+import { extractCursor } from '#lib/server/massive/client.js';
+import { listShortVolume } from '#lib/server/massive/endpoints.js';
+import { lastBusinessDay } from '#lib/format.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url }) => {

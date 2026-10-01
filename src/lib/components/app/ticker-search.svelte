@@ -2,11 +2,11 @@
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
 	import { Search } from '@lucide/svelte';
-	import * as Command from '$lib/components/ui/command';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import { Kbd } from '$lib/components/ui/kbd';
-	import { Spinner } from '$lib/components/ui/spinner';
+	import * as Command from '#lib/components/ui/command/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import { Kbd } from '#lib/components/ui/kbd/index.js';
+	import { Spinner } from '#lib/components/ui/spinner/index.js';
 
 	interface SearchResult {
 		ticker: string;
@@ -66,7 +66,7 @@
 
 <Button
 	variant="outline"
-	class="text-muted-foreground w-full min-w-0 max-w-64 shrink justify-start gap-2 font-normal"
+	class="w-full max-w-64 min-w-0 shrink justify-start gap-2 font-normal text-muted-foreground"
 	onclick={() => (open = true)}
 >
 	<Search class="size-4" />
@@ -86,12 +86,12 @@
 	/>
 	<Command.List>
 		{#if !query.trim()}
-			<div class="text-muted-foreground py-10 text-center text-sm">
+			<div class="py-10 text-center text-sm text-muted-foreground">
 				Start typing to search by symbol or company name.
 			</div>
 		{:else if loading && results.length === 0}
 			<Command.Loading>
-				<div class="text-muted-foreground flex items-center justify-center gap-2 py-10 text-sm">
+				<div class="flex items-center justify-center gap-2 py-10 text-sm text-muted-foreground">
 					<Spinner class="size-4" />
 					Searching…
 				</div>

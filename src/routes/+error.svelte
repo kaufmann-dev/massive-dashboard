@@ -2,8 +2,8 @@
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
 	import { RotateCcw, SearchX, TriangleAlert } from '@lucide/svelte';
-	import { buttonVariants } from '$lib/components/ui/button';
-	import * as Empty from '$lib/components/ui/empty';
+	import { buttonVariants } from '#lib/components/ui/button/index.js';
+	import * as Empty from '#lib/components/ui/empty/index.js';
 
 	const notFound = $derived(page.status === 404);
 	const title = $derived(notFound ? 'Page not found' : 'Something went wrong');
@@ -51,6 +51,6 @@
 				Back to dashboard
 			</a>
 		</div>
-		<p class="text-muted-foreground text-xs">Error {page.status}</p>
+		<p class="text-xs text-muted-foreground">Error {page.status}</p>
 	</Empty.Content>
 </Empty.Root>

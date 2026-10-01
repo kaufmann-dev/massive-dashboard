@@ -1,12 +1,12 @@
 import { error } from '@sveltejs/kit';
-import { MassiveApiError } from '$lib/server/massive/client';
+import { MassiveApiError } from '#lib/server/massive/client.js';
 import {
 	getPreviousDayBar,
 	getTickerOverview,
 	getTickerSnapshot,
 	listTickers
-} from '$lib/server/massive/endpoints';
-import type { TickerOverview } from '$lib/massive/types';
+} from '#lib/server/massive/endpoints.js';
+import type { TickerOverview } from '#lib/massive/types.js';
 import type { LayoutServerLoad } from './$types';
 
 export const load: LayoutServerLoad = async ({ params }) => {

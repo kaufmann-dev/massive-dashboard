@@ -12,7 +12,7 @@
 		href={docs}
 		target="_blank"
 		rel="external noreferrer"
-		class="bg-muted text-muted-foreground hover:text-foreground inline-flex min-w-0 max-w-full items-center gap-1 rounded-md px-2 py-0.5 font-mono text-xs transition-colors"
+		class="inline-flex max-w-full min-w-0 items-center gap-1 rounded-md bg-muted px-2 py-0.5 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
 		title="Open Massive.com docs"
 	>
 		<span class="text-green-600 dark:text-green-500">GET</span>
@@ -20,7 +20,7 @@
 	</a>
 {:else}
 	<span
-		class="bg-muted text-muted-foreground inline-flex min-w-0 max-w-full items-center gap-1 rounded-md px-2 py-0.5 font-mono text-xs"
+		class="inline-flex max-w-full min-w-0 items-center gap-1 rounded-md bg-muted px-2 py-0.5 font-mono text-xs text-muted-foreground"
 	>
 		<span class="text-green-600 dark:text-green-500">GET</span>
 		<span class="truncate">{path}</span>

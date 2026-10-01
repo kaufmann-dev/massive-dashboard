@@ -1,4 +1,4 @@
-import { listDividends, listIpos, listSplits } from '$lib/server/massive/endpoints';
+import { listDividends, listIpos, listSplits } from '#lib/server/massive/endpoints.js';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {

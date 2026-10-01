@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
-	import { cn, type WithElementRef, type WithoutChildren } from '$lib/utils.js';
+	import { cn, type WithElementRef, type WithoutChildren } from '#lib/utils.js';
 	import { HugeiconsIcon } from '@hugeicons/svelte';
 	import { MoreHorizontalCircle01Icon } from '@hugeicons/core-free-icons';
 
@@ -16,7 +16,7 @@
 	aria-hidden="true"
 	data-slot="pagination-ellipsis"
 	class={cn(
-		"size-7 items-center justify-center [&_svg:not([class*='size-'])]:size-3.5 flex items-center justify-center",
+		"flex size-7 items-center items-center justify-center justify-center [&_svg:not([class*='size-'])]:size-3.5",
 		className
 	)}
 	{...restProps}

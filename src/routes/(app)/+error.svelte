@@ -2,8 +2,8 @@
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
 	import { RotateCcw, SearchX, TriangleAlert } from '@lucide/svelte';
-	import { buttonVariants } from '$lib/components/ui/button';
-	import * as Empty from '$lib/components/ui/empty';
+	import { buttonVariants } from '#lib/components/ui/button/index.js';
+	import * as Empty from '#lib/components/ui/empty/index.js';
 
 	const notFound = $derived(page.status === 404);
 	const unknownTicker = $derived(
@@ -36,10 +36,10 @@
 		<Empty.Title>{title}</Empty.Title>
 		<Empty.Description>
 			{#if unknownTicker}
-				There is no data for <span class="text-foreground font-mono font-medium"
+				There is no data for <span class="font-mono font-medium text-foreground"
 					>{unknownTicker}</span
 				>. Check the symbol for typos, or search for the company by name with
-				<kbd class="bg-muted rounded border px-1.5 py-0.5 font-mono text-xs">⌘K</kbd>.
+				<kbd class="rounded border bg-muted px-1.5 py-0.5 font-mono text-xs">⌘K</kbd>.
 			{:else if notFound}
 				This page doesn't exist. It may have been moved, or the address has a typo.
 			{:else}
@@ -64,6 +64,6 @@
 				</a>
 			{/if}
 		</div>
-		<p class="text-muted-foreground text-xs">Error {page.status}</p>
+		<p class="text-xs text-muted-foreground">Error {page.status}</p>
 	</Empty.Content>
 </Empty.Root>

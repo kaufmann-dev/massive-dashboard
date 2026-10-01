@@ -1,18 +1,18 @@
 <script lang="ts">
 	import { ExternalLink } from '@lucide/svelte';
-	import CursorPagination from '$lib/components/app/cursor-pagination.svelte';
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import TickerLink from '$lib/components/app/ticker-link.svelte';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button, buttonVariants } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import * as Table from '$lib/components/ui/table';
-	import { changeClass, fmtCompact, fmtDate, fmtPrice } from '$lib/format';
-	import type { InsiderFormBase } from '$lib/massive/types';
-	import { resolveHref } from '$lib/paths';
+	import CursorPagination from '#lib/components/app/cursor-pagination.svelte';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import TickerLink from '#lib/components/app/ticker-link.svelte';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button, buttonVariants } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { changeClass, fmtCompact, fmtDate, fmtPrice } from '#lib/format.js';
+	import type { InsiderFormBase } from '#lib/massive/types.js';
+	import { resolveHref } from '#lib/paths.js';
 
 	let { data } = $props();
 
@@ -158,7 +158,7 @@
 					</Table.Row>
 				{:else}
 					<Table.Row
-						><Table.Cell colspan={10} class="text-muted-foreground text-center"
+						><Table.Cell colspan={10} class="text-center text-muted-foreground"
 							>No filings found.</Table.Cell
 						></Table.Row
 					>

@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { ExternalLink } from '@lucide/svelte';
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import { Badge } from '$lib/components/ui/badge';
-	import { buttonVariants } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import * as Table from '$lib/components/ui/table';
-	import { changeClass, fmtCompact, fmtDate, fmtPrice } from '$lib/format';
-	import { resolveHref } from '$lib/paths';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { buttonVariants } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import * as Table from '#lib/components/ui/table/index.js';
+	import { changeClass, fmtCompact, fmtDate, fmtPrice } from '#lib/format.js';
+	import { resolveHref } from '#lib/paths.js';
 
 	let { data } = $props();
 </script>
@@ -77,7 +77,7 @@
 						</Table.Row>
 					{:else}
 						<Table.Row
-							><Table.Cell colspan={3} class="text-muted-foreground text-center"
+							><Table.Cell colspan={3} class="text-center text-muted-foreground"
 								>No filings found.</Table.Cell
 							></Table.Row
 						>
@@ -144,7 +144,7 @@
 						</Table.Row>
 					{:else}
 						<Table.Row
-							><Table.Cell colspan={5} class="text-muted-foreground text-center"
+							><Table.Cell colspan={5} class="text-center text-muted-foreground"
 								>No insider transactions found.</Table.Cell
 							></Table.Row
 						>
@@ -183,17 +183,17 @@
 						href={disclosure.filing_url}
 						target="_blank"
 						rel="noreferrer"
-						class="text-muted-foreground hover:text-foreground ml-auto"
+						class="ml-auto text-muted-foreground hover:text-foreground"
 					>
 						<ExternalLink class="size-3.5" />
 					</a>
 				</div>
 				{#if disclosure.supporting_text}
-					<p class="text-muted-foreground line-clamp-3">{disclosure.supporting_text}</p>
+					<p class="line-clamp-3 text-muted-foreground">{disclosure.supporting_text}</p>
 				{/if}
 			</div>
 		{:else}
-			<p class="text-muted-foreground text-sm">No 8-K disclosures found.</p>
+			<p class="text-sm text-muted-foreground">No 8-K disclosures found.</p>
 		{/each}
 	</Card.Content>
 </Card.Root>
@@ -220,11 +220,11 @@
 					{#if risk.tertiary_category}<Badge variant="outline">{risk.tertiary_category}</Badge>{/if}
 				</div>
 				{#if risk.supporting_text}
-					<p class="text-muted-foreground line-clamp-3">{risk.supporting_text}</p>
+					<p class="line-clamp-3 text-muted-foreground">{risk.supporting_text}</p>
 				{/if}
 			</div>
 		{:else}
-			<p class="text-muted-foreground text-sm">No risk factor data found.</p>
+			<p class="text-sm text-muted-foreground">No risk factor data found.</p>
 		{/each}
 	</Card.Content>
 </Card.Root>

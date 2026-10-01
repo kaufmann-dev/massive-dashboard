@@ -1,6 +1,6 @@
-import { extractCursor } from '$lib/server/massive/client';
-import { listForm3, listForm4 } from '$lib/server/massive/endpoints';
-import type { Form3Filing, Form4Filing } from '$lib/massive/types';
+import { extractCursor } from '#lib/server/massive/client.js';
+import { listForm3, listForm4 } from '#lib/server/massive/endpoints.js';
+import type { Form3Filing, Form4Filing } from '#lib/massive/types.js';
 import type { PageServerLoad } from './$types';
 
 /** Form 3 and Form 4 rows rendered by the same table. */

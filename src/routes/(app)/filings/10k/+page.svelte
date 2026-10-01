@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { ExternalLink } from '@lucide/svelte';
-	import CursorPagination from '$lib/components/app/cursor-pagination.svelte';
-	import EndpointTag from '$lib/components/app/endpoint-tag.svelte';
-	import PageHeader from '$lib/components/app/page-header.svelte';
-	import * as Accordion from '$lib/components/ui/accordion';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
-	import * as Card from '$lib/components/ui/card';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
-	import * as NativeSelect from '$lib/components/ui/native-select';
-	import { fmtDate, titleCase } from '$lib/format';
+	import CursorPagination from '#lib/components/app/cursor-pagination.svelte';
+	import EndpointTag from '#lib/components/app/endpoint-tag.svelte';
+	import PageHeader from '#lib/components/app/page-header.svelte';
+	import * as Accordion from '#lib/components/ui/accordion/index.js';
+	import { Badge } from '#lib/components/ui/badge/index.js';
+	import { Button } from '#lib/components/ui/button/index.js';
+	import * as Card from '#lib/components/ui/card/index.js';
+	import { Input } from '#lib/components/ui/input/index.js';
+	import { Label } from '#lib/components/ui/label/index.js';
+	import * as NativeSelect from '#lib/components/ui/native-select/index.js';
+	import { fmtDate, titleCase } from '#lib/format.js';
 
 	let { data } = $props();
 
@@ -75,7 +75,7 @@
 							{#if section.ticker}<span class="font-mono font-semibold">{section.ticker}</span>{/if}
 							<Badge variant="secondary">{titleCase(section.section)}</Badge>
 							{#if section.period_end}
-								<span class="text-muted-foreground text-xs"
+								<span class="text-xs text-muted-foreground"
 									>FY ending {fmtDate(section.period_end)}</span
 								>
 							{/if}
@@ -92,7 +92,7 @@
 								View filing on SEC EDGAR <ExternalLink class="size-3" />
 							</a>
 							<p
-								class="text-muted-foreground max-h-[32rem] overflow-y-auto text-sm whitespace-pre-line"
+								class="max-h-[32rem] overflow-y-auto text-sm whitespace-pre-line text-muted-foreground"
 							>
 								{section.text}
 							</p>
@@ -100,7 +100,7 @@
 					</Accordion.Content>
 				</Accordion.Item>
 			{:else}
-				<p class="text-muted-foreground py-8 text-center text-sm">No sections found.</p>
+				<p class="py-8 text-center text-sm text-muted-foreground">No sections found.</p>
 			{/each}
 		</Accordion.Root>
 		<CursorPagination nextCursor={data.nextCursor} />
