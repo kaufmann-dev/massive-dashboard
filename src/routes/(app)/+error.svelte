@@ -1,17 +1,24 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
-	import { RotateCcw, SearchX, TriangleAlert } from '@lucide/svelte';
+	import { RotateCcw, SearchX, ShieldX, TriangleAlert } from '@lucide/svelte';
 	import { buttonVariants } from '#lib/components/ui/button/index.js';
 	import * as Empty from '#lib/components/ui/empty/index.js';
 
 	const notFound = $derived(page.status === 404);
+	const forbidden = $derived(page.status === 403);
 	const unknownTicker = $derived(
 		notFound ? (page.error?.message.match(/^Unknown ticker "(.+)"$/)?.[1] ?? null) : null
 	);
 
 	const title = $derived(
-		unknownTicker ? 'Ticker not found' : notFound ? 'Page not found' : 'Something went wrong'
+		unknownTicker
+			? 'Ticker not found'
+			: notFound
+				? 'Page not found'
+				: forbidden
+					? 'Access denied'
+					: 'Something went wrong'
 	);
 
 	const detail = $derived.by(() => {
@@ -29,6 +36,8 @@
 		<Empty.Media variant="icon">
 			{#if notFound}
 				<SearchX />
+			{:else if forbidden}
+				<ShieldX />
 			{:else}
 				<TriangleAlert />
 			{/if}
@@ -42,6 +51,8 @@
 				<kbd class="rounded border bg-muted px-1.5 py-0.5 font-mono text-xs">⌘K</kbd>.
 			{:else if notFound}
 				This page doesn't exist. It may have been moved, or the address has a typo.
+			{:else if forbidden}
+				You don't have permission to view this page.
 			{:else}
 				{detail} If this keeps happening, the data provider may be temporarily unavailable.
 			{/if}
@@ -49,7 +60,7 @@
 	</Empty.Header>
 	<Empty.Content>
 		<div class="flex flex-wrap justify-center gap-2">
-			{#if notFound}
+			{#if notFound || forbidden}
 				<a href={resolve('/(app)/tickers')} class={buttonVariants()}>Browse tickers</a>
 				<a href={resolve('/(app)')} class={buttonVariants({ variant: 'outline' })}>
 					Back to dashboard
