@@ -70,6 +70,7 @@
 		"node": ">=24.0.0"
 	},
 	"dependencies": {
+		"@fontsource-variable/jetbrains-mono": "^5.3.0",
 		"@lucide/svelte": "^1.49.0",
 		"better-svelte-email": "^2.3.0",
 		"lightweight-charts": "^5.2.1",
