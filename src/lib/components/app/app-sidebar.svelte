@@ -24,7 +24,7 @@
 				<Sidebar.MenuButton size="lg">
 					{#snippet child({ props })}
 						<a href={resolve('/(app)')} {...props} onclick={closeMobileSidebar}>
-							<Logo class="size-7! shrink-0 text-foreground" />
+							<Logo class="size-7! shrink-0" />
 							<div class="grid flex-1 text-left text-sm leading-tight">
 								<span class="truncate font-semibold">Massive Dashboard</span>
 								<span class="truncate text-xs text-muted-foreground">US Stocks · Starter</span>

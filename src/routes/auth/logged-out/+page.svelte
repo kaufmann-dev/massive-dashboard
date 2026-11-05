@@ -12,7 +12,7 @@
 <div class="flex min-h-svh items-center justify-center bg-muted/40 p-4">
 	<Card.Root class="w-full max-w-sm">
 		<Card.Header class="text-center">
-			<Logo class="mx-auto mb-2 size-11 text-foreground" />
+			<Logo class="mx-auto mb-2 size-11" />
 			<Card.Title class="text-xl">Signed out</Card.Title>
 			<Card.Description>Your local and provider sessions have been ended.</Card.Description>
 		</Card.Header>
