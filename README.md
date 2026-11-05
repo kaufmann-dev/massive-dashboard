@@ -103,11 +103,10 @@ The project uses SvelteKit adapter-node, so production output is written to `bui
 
 The server startup hook runs Drizzle migrations before handling requests. You can still run `pnpm db:migrate` manually during deployment if your platform supports a pre-deploy command; it is idempotent with the startup migration.
 
-For Coolify/Nixpacks deployments:
+For Coolify/Railpack deployments:
 
 - Base directory: repository root
-- Install and build commands: leave empty; `nixpacks.toml` runs the pinned pnpm 11.18.0 (`packageManager`) because Nixpacks' bundled pnpm 9 cannot read the workspace overrides
-- Start command: `node build`
+- Install, build, and start commands: leave empty; Railpack installs and builds with the pnpm version from `packageManager`, and `railpack.json` starts `node build`
 - Publish directory: leave empty for adapter-node
 - Set `DATABASE_URL`, `MASSIVE_API_KEY`, `ORIGIN`, `OIDC_ISSUER`, `OIDC_CLIENT_ID`, and `OIDC_CLIENT_SECRET`.
 - Ensure the PostgreSQL database is provisioned separately and reachable from the app container
@@ -127,10 +126,10 @@ pnpm db:migrate
 
 ## Coolify Deployment
 
-- **Build Pack**: Nixpacks
+- **Build Pack**: Railpack
 - **Base Directory**: `/`
 
-The build and start commands are handled by `nixpacks.toml`. The runtime is pinned via `engines.node` in `package.json` — do **not** set `NIXPACKS_NODE_VERSION` in Coolify environment variables.
+Railpack detects the install and build commands, and `railpack.json` sets the start command. Node is pinned via `engines.node` and pnpm via `packageManager` in `package.json` — do **not** set `RAILPACK_NODE_VERSION` in Coolify environment variables.
 
 - **Environment Variables**
   - **Required**
