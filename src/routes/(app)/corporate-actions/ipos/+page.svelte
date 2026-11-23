@@ -85,20 +85,20 @@
 						<Table.Cell class="text-right tabular-nums">
 							{fmtPrice(ipo.final_issue_price ?? ipo.highest_offer_price)}
 						</Table.Cell>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtCompact(ipo.total_offer_size)}</Table.Cell
-						>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtCompact(ipo.total_offer_size)}
+						</Table.Cell>
 						<Table.Cell class="font-mono text-xs">{ipo.primary_exchange ?? '–'}</Table.Cell>
-						<Table.Cell class="max-w-48 truncate text-xs"
-							>{ipo.security_description ?? ipo.security_type ?? '–'}</Table.Cell
-						>
+						<Table.Cell class="max-w-48 truncate text-xs">
+							{ipo.security_description ?? ipo.security_type ?? '–'}
+						</Table.Cell>
 					</Table.Row>
 				{:else}
-					<Table.Row
-						><Table.Cell colspan={8} class="text-center text-muted-foreground"
-							>No IPOs found.</Table.Cell
-						></Table.Row
-					>
+					<Table.Row>
+						<Table.Cell colspan={8} class="text-center text-muted-foreground">
+							No IPOs found.
+						</Table.Cell>
+					</Table.Row>
 				{/each}
 			</Table.Body>
 		</Table.Root>

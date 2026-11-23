@@ -87,9 +87,9 @@
 						<Table.Cell class="text-right tabular-nums">
 							{fmtPrice(snap.session?.previous_close)}
 						</Table.Cell>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtCompact(snap.session?.volume)}</Table.Cell
-						>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtCompact(snap.session?.volume)}
+						</Table.Cell>
 						<Table.Cell>
 							{#if snap.error}
 								<Badge variant="destructive">{snap.error}</Badge>

@@ -64,8 +64,10 @@
 				href="https://massive.com"
 				target="_blank"
 				rel="external noreferrer"
-				class="underline">Massive.com</a
+				class="underline"
 			>
+				Massive.com
+			</a>
 		</p>
 	</Sidebar.Footer>
 	<Sidebar.Rail />

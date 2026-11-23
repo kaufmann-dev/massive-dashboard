@@ -45,12 +45,12 @@
 					{#each data.dividends as dividend (dividend.id)}
 						<Table.Row>
 							<Table.Cell>{fmtDate(dividend.ex_dividend_date)}</Table.Cell>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtPrice(dividend.cash_amount)}</Table.Cell
-							>
-							<Table.Cell
-								>{frequencyLabels[dividend.frequency] ?? `${dividend.frequency}×/yr`}</Table.Cell
-							>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtPrice(dividend.cash_amount)}
+							</Table.Cell>
+							<Table.Cell>
+								{frequencyLabels[dividend.frequency] ?? `${dividend.frequency}×/yr`}
+							</Table.Cell>
 							<Table.Cell>
 								{#if dividend.distribution_type}
 									<Badge variant="outline">{titleCase(dividend.distribution_type)}</Badge>
@@ -61,9 +61,9 @@
 						</Table.Row>
 					{:else}
 						<Table.Row>
-							<Table.Cell colspan={6} class="text-center text-muted-foreground"
-								>No dividends recorded.</Table.Cell
-							>
+							<Table.Cell colspan={6} class="text-center text-muted-foreground">
+								No dividends recorded.
+							</Table.Cell>
 						</Table.Row>
 					{/each}
 				</Table.Body>
@@ -95,9 +95,9 @@
 						{#each data.splits as split (split.id)}
 							<Table.Row>
 								<Table.Cell>{fmtDate(split.execution_date)}</Table.Cell>
-								<Table.Cell class="text-right tabular-nums"
-									>{split.split_to}:{split.split_from}</Table.Cell
-								>
+								<Table.Cell class="text-right tabular-nums">
+									{split.split_to}:{split.split_from}
+								</Table.Cell>
 								<Table.Cell>
 									{#if split.adjustment_type}
 										<Badge variant="outline">{titleCase(split.adjustment_type)}</Badge>
@@ -106,9 +106,9 @@
 							</Table.Row>
 						{:else}
 							<Table.Row>
-								<Table.Cell colspan={3} class="text-center text-muted-foreground"
-									>No splits recorded.</Table.Cell
-								>
+								<Table.Cell colspan={3} class="text-center text-muted-foreground">
+									No splits recorded.
+								</Table.Cell>
 							</Table.Row>
 						{/each}
 					</Table.Body>

@@ -26,12 +26,16 @@
 			<nav aria-label="Legal" class="flex items-center gap-4 text-muted-foreground">
 				<a
 					class="rounded-sm underline-offset-4 hover:text-foreground hover:underline focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:outline-none"
-					href="https://legal.kaufmann.dev/imprint?site=massive.kaufmann.dev">Imprint</a
+					href="https://legal.kaufmann.dev/imprint?site=massive.kaufmann.dev"
 				>
+					Imprint
+				</a>
 				<a
 					class="rounded-sm underline-offset-4 hover:text-foreground hover:underline focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:outline-none"
-					href="https://legal.kaufmann.dev/privacy?site=massive.kaufmann.dev">Privacy</a
+					href="https://legal.kaufmann.dev/privacy?site=massive.kaufmann.dev"
 				>
+					Privacy
+				</a>
 			</nav>
 		</Card.Footer>
 	</Card.Root>

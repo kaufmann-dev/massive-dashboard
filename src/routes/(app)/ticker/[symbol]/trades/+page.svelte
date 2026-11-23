@@ -108,21 +108,22 @@
 				<Table.Body>
 					{#each data.trades.data.results ?? [] as trade, index (trade.sequence_number ?? index)}
 						<Table.Row>
-							<Table.Cell class="whitespace-nowrap">{fmtDateTimeNs(trade.sip_timestamp)}</Table.Cell
-							>
+							<Table.Cell class="whitespace-nowrap">
+								{fmtDateTimeNs(trade.sip_timestamp)}
+							</Table.Cell>
 							<Table.Cell class="text-right tabular-nums">{fmtPrice(trade.price)}</Table.Cell>
 							<Table.Cell class="text-right tabular-nums">{fmtCompact(trade.size)}</Table.Cell>
 							<Table.Cell class="text-right tabular-nums">{trade.exchange ?? '–'}</Table.Cell>
-							<Table.Cell class="font-mono text-xs text-muted-foreground"
-								>{(trade.conditions ?? []).join(', ')}</Table.Cell
-							>
+							<Table.Cell class="font-mono text-xs text-muted-foreground">
+								{(trade.conditions ?? []).join(', ')}
+							</Table.Cell>
 						</Table.Row>
 					{:else}
-						<Table.Row
-							><Table.Cell colspan={5} class="text-center text-muted-foreground"
-								>No trades returned.</Table.Cell
-							></Table.Row
-						>
+						<Table.Row>
+							<Table.Cell colspan={5} class="text-center text-muted-foreground">
+								No trades returned.
+							</Table.Cell>
+						</Table.Row>
 					{/each}
 				</Table.Body>
 			</Table.Root>
@@ -158,19 +159,20 @@
 				<Table.Body>
 					{#each data.quotes.data.results ?? [] as quote, index (quote.sequence_number ?? index)}
 						<Table.Row>
-							<Table.Cell class="whitespace-nowrap">{fmtDateTimeNs(quote.sip_timestamp)}</Table.Cell
-							>
+							<Table.Cell class="whitespace-nowrap">
+								{fmtDateTimeNs(quote.sip_timestamp)}
+							</Table.Cell>
 							<Table.Cell class="text-right tabular-nums">{fmtPrice(quote.bid_price)}</Table.Cell>
 							<Table.Cell class="text-right tabular-nums">{fmtCompact(quote.bid_size)}</Table.Cell>
 							<Table.Cell class="text-right tabular-nums">{fmtPrice(quote.ask_price)}</Table.Cell>
 							<Table.Cell class="text-right tabular-nums">{fmtCompact(quote.ask_size)}</Table.Cell>
 						</Table.Row>
 					{:else}
-						<Table.Row
-							><Table.Cell colspan={5} class="text-center text-muted-foreground"
-								>No quotes returned.</Table.Cell
-							></Table.Row
-						>
+						<Table.Row>
+							<Table.Cell colspan={5} class="text-center text-muted-foreground">
+								No quotes returned.
+							</Table.Cell>
+						</Table.Row>
 					{/each}
 				</Table.Body>
 			</Table.Root>

@@ -6,5 +6,7 @@
 
 <a
 	href={resolve('/(app)/ticker/[symbol]', { symbol: ticker })}
-	class="font-mono font-medium hover:underline {className}">{ticker}</a
+	class="font-mono font-medium hover:underline {className}"
 >
+	{ticker}
+</a>

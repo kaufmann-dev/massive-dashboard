@@ -124,11 +124,11 @@
 						{/each}
 					</Table.Row>
 				{:else}
-					<Table.Row
-						><Table.Cell colspan={8} class="text-center text-muted-foreground"
-							>No records found.</Table.Cell
-						></Table.Row
-					>
+					<Table.Row>
+						<Table.Cell colspan={8} class="text-center text-muted-foreground">
+							No records found.
+						</Table.Cell>
+					</Table.Row>
 				{/each}
 			</Table.Body>
 		</Table.Root>

@@ -72,8 +72,9 @@
 				{#each data.dividends as dividend (dividend.id)}
 					<Table.Row>
 						<Table.Cell><TickerLink ticker={dividend.ticker} /></Table.Cell>
-						<Table.Cell class="text-right tabular-nums">{fmtPrice(dividend.cash_amount)}</Table.Cell
-						>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtPrice(dividend.cash_amount)}
+						</Table.Cell>
 						<Table.Cell>
 							{#if dividend.distribution_type}
 								<Badge variant="outline">{titleCase(dividend.distribution_type)}</Badge>
@@ -86,11 +87,11 @@
 						<Table.Cell>{fmtDate(dividend.pay_date)}</Table.Cell>
 					</Table.Row>
 				{:else}
-					<Table.Row
-						><Table.Cell colspan={8} class="text-center text-muted-foreground"
-							>No dividends found.</Table.Cell
-						></Table.Row
-					>
+					<Table.Row>
+						<Table.Cell colspan={8} class="text-center text-muted-foreground">
+							No dividends found.
+						</Table.Cell>
+					</Table.Row>
 				{/each}
 			</Table.Body>
 		</Table.Root>

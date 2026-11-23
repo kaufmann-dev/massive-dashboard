@@ -21,8 +21,10 @@
 				class={buttonVariants({ class: 'w-full' })}
 				href={resolve('auth/login')}
 				data-sveltekit-preload-data="false"
-				data-sveltekit-reload>Sign in</a
+				data-sveltekit-reload
 			>
+				Sign in
+			</a>
 		</Card.Content>
 	</Card.Root>
 </div>

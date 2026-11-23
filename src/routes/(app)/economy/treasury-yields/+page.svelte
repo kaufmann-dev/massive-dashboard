@@ -143,17 +143,17 @@
 					<Table.Row>
 						<Table.Cell>{fmtDate(record.date)}</Table.Cell>
 						{#each TREASURY_MATURITIES as maturity (maturity.key)}
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtDecimal(record[maturity.key])}</Table.Cell
-							>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtDecimal(record[maturity.key])}
+							</Table.Cell>
 						{/each}
 					</Table.Row>
 				{:else}
-					<Table.Row
-						><Table.Cell colspan={12} class="text-center text-muted-foreground"
-							>No records found.</Table.Cell
-						></Table.Row
-					>
+					<Table.Row>
+						<Table.Cell colspan={12} class="text-center text-muted-foreground">
+							No records found.
+						</Table.Cell>
+					</Table.Row>
 				{/each}
 			</Table.Body>
 		</Table.Root>

@@ -27,9 +27,9 @@
 <div class="grid gap-4 md:grid-cols-3">
 	<Card.Root>
 		<Card.Header>
-			<Card.Description class="flex items-center gap-1.5"
-				><Clock class="size-3.5" /> Market status</Card.Description
-			>
+			<Card.Description class="flex items-center gap-1.5">
+				<Clock class="size-3.5" /> Market status
+			</Card.Description>
 			<Card.Title class="text-2xl capitalize">{data.status.market.replace('-', ' ')}</Card.Title>
 		</Card.Header>
 		<Card.Content class="grid gap-1 text-sm text-muted-foreground">
@@ -46,9 +46,9 @@
 	</Card.Root>
 	<Card.Root>
 		<Card.Header>
-			<Card.Description class="flex items-center gap-1.5"
-				><Landmark class="size-3.5" /> Exchanges</Card.Description
-			>
+			<Card.Description class="flex items-center gap-1.5">
+				<Landmark class="size-3.5" /> Exchanges
+			</Card.Description>
 			<Card.Title class="text-2xl">US Equity Markets</Card.Title>
 		</Card.Header>
 		<Card.Content class="flex flex-wrap gap-1.5">
@@ -61,23 +61,23 @@
 	</Card.Root>
 	<Card.Root>
 		<Card.Header>
-			<Card.Description class="flex items-center gap-1.5"
-				><CalendarDays class="size-3.5" /> Next market holiday</Card.Description
-			>
+			<Card.Description class="flex items-center gap-1.5">
+				<CalendarDays class="size-3.5" /> Next market holiday
+			</Card.Description>
 			<Card.Title class="text-2xl">{nextHoliday ? nextHoliday.name : 'None upcoming'}</Card.Title>
 		</Card.Header>
 		<Card.Content class="grid gap-1 text-sm text-muted-foreground">
 			{#if nextHoliday}
-				<span
-					>{fmtDate(nextHoliday.date)} · {nextHoliday.exchange} · {titleCase(
-						nextHoliday.status
-					)}</span
-				>
+				<span>
+					{fmtDate(nextHoliday.date)} · {nextHoliday.exchange} · {titleCase(nextHoliday.status)}
+				</span>
 			{/if}
 			<a
 				href={resolve('markets/status')}
-				class="text-sm font-medium text-foreground hover:underline">All holidays →</a
+				class="text-sm font-medium text-foreground hover:underline"
 			>
+				All holidays →
+			</a>
 		</Card.Content>
 	</Card.Root>
 </div>
@@ -89,9 +89,9 @@
 				<TrendingUp class="size-4 text-green-600 dark:text-green-500" /> Top gainers
 			</Card.Title>
 
-			<a href={resolve('markets/movers')} class={buttonVariants({ variant: 'ghost', size: 'sm' })}
-				>View all</a
-			>
+			<a href={resolve('markets/movers')} class={buttonVariants({ variant: 'ghost', size: 'sm' })}>
+				View all
+			</a>
 		</Card.Header>
 		<Card.Content>
 			<MoversTable tickers={data.gainers} />
@@ -103,9 +103,9 @@
 				<TrendingDown class="size-4 text-red-600 dark:text-red-500" /> Top losers
 			</Card.Title>
 
-			<a href={resolve('markets/movers')} class={buttonVariants({ variant: 'ghost', size: 'sm' })}
-				>View all</a
-			>
+			<a href={resolve('markets/movers')} class={buttonVariants({ variant: 'ghost', size: 'sm' })}>
+				View all
+			</a>
 		</Card.Header>
 		<Card.Content>
 			<MoversTable tickers={data.losers} />

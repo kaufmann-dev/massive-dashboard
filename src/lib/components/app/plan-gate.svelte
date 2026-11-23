@@ -23,8 +23,10 @@
 				href="https://massive.com/pricing"
 				target="_blank"
 				rel="noreferrer"
-				class="font-medium underline">massive.com/pricing</a
-			> for plans that include it.
+				class="font-medium underline"
+			>
+				massive.com/pricing
+			</a> for plans that include it.
 		</p>
 	</Alert.Description>
 </Alert.Root>

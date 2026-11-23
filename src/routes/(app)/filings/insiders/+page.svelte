@@ -111,9 +111,9 @@
 						<Table.Cell>
 							{#if filing.tickers?.[0]}<TickerLink ticker={filing.tickers[0]} />{:else}–{/if}
 						</Table.Cell>
-						<Table.Cell class="max-w-48 truncate"
-							>{filing.owner_name ?? filing.owner_cik}</Table.Cell
-						>
+						<Table.Cell class="max-w-48 truncate">
+							{filing.owner_name ?? filing.owner_cik}
+						</Table.Cell>
 						<Table.Cell class="max-w-40 truncate text-xs">{role(filing)}</Table.Cell>
 						{#if data.filters.form === '4'}
 							<Table.Cell>
@@ -128,22 +128,22 @@
 							>
 								{fmtCompact(filing.transaction_shares)}
 							</Table.Cell>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtPrice(filing.transaction_price_per_share)}</Table.Cell
-							>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtCompact(filing.transaction_value)}</Table.Cell
-							>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtCompact(filing.shares_owned_following_transaction)}</Table.Cell
-							>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtPrice(filing.transaction_price_per_share)}
+							</Table.Cell>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtCompact(filing.transaction_value)}
+							</Table.Cell>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtCompact(filing.shares_owned_following_transaction)}
+							</Table.Cell>
 						{:else}
-							<Table.Cell class="max-w-48 truncate text-xs"
-								>{filing.security_title ?? '–'}</Table.Cell
-							>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtCompact(filing.shares_owned)}</Table.Cell
-							>
+							<Table.Cell class="max-w-48 truncate text-xs">
+								{filing.security_title ?? '–'}
+							</Table.Cell>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtCompact(filing.shares_owned)}
+							</Table.Cell>
 						{/if}
 						<Table.Cell>
 							<a
@@ -157,11 +157,11 @@
 						</Table.Cell>
 					</Table.Row>
 				{:else}
-					<Table.Row
-						><Table.Cell colspan={10} class="text-center text-muted-foreground"
-							>No filings found.</Table.Cell
-						></Table.Row
-					>
+					<Table.Row>
+						<Table.Cell colspan={10} class="text-center text-muted-foreground">
+							No filings found.
+						</Table.Cell>
+					</Table.Row>
 				{/each}
 			</Table.Body>
 		</Table.Root>

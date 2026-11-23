@@ -70,22 +70,22 @@
 					<Table.Row>
 						<Table.Cell><TickerLink ticker={record.ticker} /></Table.Cell>
 						<Table.Cell>{fmtDate(record.settlement_date)}</Table.Cell>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtCompact(record.short_interest)}</Table.Cell
-						>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtCompact(record.avg_daily_volume)}</Table.Cell
-						>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtNumber(record.days_to_cover)}</Table.Cell
-						>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtCompact(record.short_interest)}
+						</Table.Cell>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtCompact(record.avg_daily_volume)}
+						</Table.Cell>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtNumber(record.days_to_cover)}
+						</Table.Cell>
 					</Table.Row>
 				{:else}
-					<Table.Row
-						><Table.Cell colspan={5} class="text-center text-muted-foreground"
-							>No records found.</Table.Cell
-						></Table.Row
-					>
+					<Table.Row>
+						<Table.Cell colspan={5} class="text-center text-muted-foreground">
+							No records found.
+						</Table.Cell>
+					</Table.Row>
 				{/each}
 			</Table.Body>
 		</Table.Root>

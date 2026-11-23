@@ -69,9 +69,9 @@
 					<Table.Row>
 						<Table.Cell><TickerLink ticker={split.ticker} /></Table.Cell>
 						<Table.Cell>{fmtDate(split.execution_date)}</Table.Cell>
-						<Table.Cell class="text-right tabular-nums"
-							>{split.split_to}:{split.split_from}</Table.Cell
-						>
+						<Table.Cell class="text-right tabular-nums">
+							{split.split_to}:{split.split_from}
+						</Table.Cell>
 						<Table.Cell>
 							{#if split.adjustment_type}
 								<Badge variant="outline">{titleCase(split.adjustment_type)}</Badge>
@@ -82,11 +82,11 @@
 						</Table.Cell>
 					</Table.Row>
 				{:else}
-					<Table.Row
-						><Table.Cell colspan={5} class="text-center text-muted-foreground"
-							>No splits found.</Table.Cell
-						></Table.Row
-					>
+					<Table.Row>
+						<Table.Cell colspan={5} class="text-center text-muted-foreground">
+							No splits found.
+						</Table.Cell>
+					</Table.Row>
 				{/each}
 			</Table.Body>
 		</Table.Root>

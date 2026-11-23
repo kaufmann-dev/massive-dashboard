@@ -59,8 +59,9 @@
 					<span class="whitespace-nowrap text-muted-foreground">{fmtDate(risk.filing_date)}</span>
 					{#if risk.ticker}<TickerLink ticker={risk.ticker} />{/if}
 					{#if risk.primary_category}<Badge variant="secondary">{risk.primary_category}</Badge>{/if}
-					{#if risk.secondary_category}<Badge variant="outline">{risk.secondary_category}</Badge
-						>{/if}
+					{#if risk.secondary_category}<Badge variant="outline">
+							{risk.secondary_category}
+						</Badge>{/if}
 					{#if risk.tertiary_category}<Badge variant="outline">{risk.tertiary_category}</Badge>{/if}
 				</div>
 				{#if risk.supporting_text}

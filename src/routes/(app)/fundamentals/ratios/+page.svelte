@@ -101,39 +101,40 @@
 						<Table.Row>
 							<Table.Cell><TickerLink ticker={ratio.ticker} /></Table.Cell>
 							<Table.Cell class="text-right tabular-nums">{fmtPrice(ratio.price)}</Table.Cell>
-							<Table.Cell class="text-right tabular-nums">{fmtCompact(ratio.market_cap)}</Table.Cell
-							>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtNumber(ratio.price_to_earnings)}</Table.Cell
-							>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtNumber(ratio.price_to_book)}</Table.Cell
-							>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtNumber(ratio.price_to_sales)}</Table.Cell
-							>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtPrice(ratio.earnings_per_share)}</Table.Cell
-							>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtPercent(ratio.dividend_yield)}</Table.Cell
-							>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtNumber(ratio.return_on_equity)}</Table.Cell
-							>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtNumber(ratio.debt_to_equity)}</Table.Cell
-							>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtNumber(ratio.ev_to_ebitda)}</Table.Cell
-							>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtCompact(ratio.market_cap)}
+							</Table.Cell>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtNumber(ratio.price_to_earnings)}
+							</Table.Cell>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtNumber(ratio.price_to_book)}
+							</Table.Cell>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtNumber(ratio.price_to_sales)}
+							</Table.Cell>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtPrice(ratio.earnings_per_share)}
+							</Table.Cell>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtPercent(ratio.dividend_yield)}
+							</Table.Cell>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtNumber(ratio.return_on_equity)}
+							</Table.Cell>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtNumber(ratio.debt_to_equity)}
+							</Table.Cell>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtNumber(ratio.ev_to_ebitda)}
+							</Table.Cell>
 						</Table.Row>
 					{:else}
-						<Table.Row
-							><Table.Cell colspan={11} class="text-center text-muted-foreground"
-								>No matches.</Table.Cell
-							></Table.Row
-						>
+						<Table.Row>
+							<Table.Cell colspan={11} class="text-center text-muted-foreground">
+								No matches.
+							</Table.Cell>
+						</Table.Row>
 					{/each}
 				</Table.Body>
 			</Table.Root>

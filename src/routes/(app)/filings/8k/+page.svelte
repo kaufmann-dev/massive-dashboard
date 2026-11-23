@@ -83,21 +83,21 @@
 			{#each data.disclosures as disclosure (disclosure.rowKey)}
 				<div class="grid gap-1 border-b pb-3 text-sm last:border-b-0">
 					<div class="flex flex-wrap items-center gap-2">
-						<span class="whitespace-nowrap text-muted-foreground"
-							>{fmtDate(disclosure.filing_date)}</span
-						>
+						<span class="whitespace-nowrap text-muted-foreground">
+							{fmtDate(disclosure.filing_date)}
+						</span>
 						{#each disclosure.tickers ?? [] as ticker (ticker)}
 							<TickerLink {ticker} />
 						{/each}
-						{#if disclosure.primary_category}<Badge variant="secondary"
-								>{disclosure.primary_category}</Badge
-							>{/if}
-						{#if disclosure.secondary_category}<Badge variant="outline"
-								>{disclosure.secondary_category}</Badge
-							>{/if}
-						{#if disclosure.tertiary_category}<Badge variant="outline"
-								>{disclosure.tertiary_category}</Badge
-							>{/if}
+						{#if disclosure.primary_category}<Badge variant="secondary">
+								{disclosure.primary_category}
+							</Badge>{/if}
+						{#if disclosure.secondary_category}<Badge variant="outline">
+								{disclosure.secondary_category}
+							</Badge>{/if}
+						{#if disclosure.tertiary_category}<Badge variant="outline">
+								{disclosure.tertiary_category}
+							</Badge>{/if}
 						<a
 							href={disclosure.filing_url}
 							target="_blank"

@@ -125,23 +125,21 @@
 						<Table.Cell>{fmtDate(record.date)}</Table.Cell>
 						<Table.Cell class="text-right tabular-nums">{fmtDecimal(record.cpi)}</Table.Cell>
 						<Table.Cell class="text-right tabular-nums">{fmtDecimal(record.cpi_core)}</Table.Cell>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtPercent(record.cpi_year_over_year)}</Table.Cell
-						>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtPercent(record.cpi_year_over_year)}
+						</Table.Cell>
 						<Table.Cell class="text-right tabular-nums">{fmtDecimal(record.pce)}</Table.Cell>
 						<Table.Cell class="text-right tabular-nums">{fmtDecimal(record.pce_core)}</Table.Cell>
-						<Table.Cell class="text-right tabular-nums"
-							>{record.pce_spending === undefined
-								? '–'
-								: fmtCompact(record.pce_spending * 1e9)}</Table.Cell
-						>
+						<Table.Cell class="text-right tabular-nums">
+							{record.pce_spending === undefined ? '–' : fmtCompact(record.pce_spending * 1e9)}
+						</Table.Cell>
 					</Table.Row>
 				{:else}
-					<Table.Row
-						><Table.Cell colspan={7} class="text-center text-muted-foreground"
-							>No records found.</Table.Cell
-						></Table.Row
-					>
+					<Table.Row>
+						<Table.Cell colspan={7} class="text-center text-muted-foreground">
+							No records found.
+						</Table.Cell>
+					</Table.Row>
 				{/each}
 			</Table.Body>
 		</Table.Root>

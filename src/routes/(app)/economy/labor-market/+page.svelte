@@ -122,27 +122,25 @@
 				{#each data.records as record (record.date)}
 					<Table.Row>
 						<Table.Cell>{fmtDate(record.date)}</Table.Cell>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtDecimal(record.unemployment_rate, 1)}</Table.Cell
-						>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtDecimal(record.labor_force_participation_rate, 1)}</Table.Cell
-						>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtPrice(record.avg_hourly_earnings)}</Table.Cell
-						>
-						<Table.Cell class="text-right tabular-nums"
-							>{record.job_openings === undefined
-								? '–'
-								: fmtCompact(record.job_openings * 1000)}</Table.Cell
-						>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtDecimal(record.unemployment_rate, 1)}
+						</Table.Cell>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtDecimal(record.labor_force_participation_rate, 1)}
+						</Table.Cell>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtPrice(record.avg_hourly_earnings)}
+						</Table.Cell>
+						<Table.Cell class="text-right tabular-nums">
+							{record.job_openings === undefined ? '–' : fmtCompact(record.job_openings * 1000)}
+						</Table.Cell>
 					</Table.Row>
 				{:else}
-					<Table.Row
-						><Table.Cell colspan={5} class="text-center text-muted-foreground"
-							>No records found.</Table.Cell
-						></Table.Row
-					>
+					<Table.Row>
+						<Table.Cell colspan={5} class="text-center text-muted-foreground">
+							No records found.
+						</Table.Cell>
+					</Table.Row>
 				{/each}
 			</Table.Body>
 		</Table.Root>

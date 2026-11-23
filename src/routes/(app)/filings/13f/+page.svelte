@@ -67,12 +67,12 @@
 						<Table.Cell class="max-w-56 truncate">{holding.issuer_name}</Table.Cell>
 						<Table.Cell class="text-xs">{holding.title_of_class ?? '–'}</Table.Cell>
 						<Table.Cell class="font-mono text-xs">{holding.cusip}</Table.Cell>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtCompact(holding.market_value)}</Table.Cell
-						>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtCompact(holding.shares_or_principal_amount)}</Table.Cell
-						>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtCompact(holding.market_value)}
+						</Table.Cell>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtCompact(holding.shares_or_principal_amount)}
+						</Table.Cell>
 						<Table.Cell>
 							{#if holding.put_call}<Badge variant="outline">{holding.put_call}</Badge>{/if}
 						</Table.Cell>

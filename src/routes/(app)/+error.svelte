@@ -45,9 +45,9 @@
 		<Empty.Title>{title}</Empty.Title>
 		<Empty.Description>
 			{#if unknownTicker}
-				There is no data for <span class="font-mono font-medium text-foreground"
-					>{unknownTicker}</span
-				>. Check the symbol for typos, or search for the company by name with
+				There is no data for <span class="font-mono font-medium text-foreground">
+					{unknownTicker}
+				</span>. Check the symbol for typos, or search for the company by name with
 				<kbd class="rounded border bg-muted px-1.5 py-0.5 font-mono text-xs">⌘K</kbd>.
 			{:else if notFound}
 				This page doesn't exist. It may have been moved, or the address has a typo.

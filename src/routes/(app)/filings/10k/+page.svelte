@@ -75,9 +75,9 @@
 							{#if section.ticker}<span class="font-mono font-semibold">{section.ticker}</span>{/if}
 							<Badge variant="secondary">{titleCase(section.section)}</Badge>
 							{#if section.period_end}
-								<span class="text-xs text-muted-foreground"
-									>FY ending {fmtDate(section.period_end)}</span
-								>
+								<span class="text-xs text-muted-foreground">
+									FY ending {fmtDate(section.period_end)}
+								</span>
 							{/if}
 						</span>
 					</Accordion.Trigger>

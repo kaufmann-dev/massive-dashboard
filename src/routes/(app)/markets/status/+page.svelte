@@ -38,9 +38,9 @@
 		<Card.Content class="grid gap-4 text-sm">
 			<div class="flex items-center gap-2">
 				<span class="w-32 text-muted-foreground">Overall market</span>
-				<Badge variant={stateVariant(data.status.market)} class="capitalize"
-					>{data.status.market}</Badge
-				>
+				<Badge variant={stateVariant(data.status.market)} class="capitalize">
+					{data.status.market}
+				</Badge>
 			</div>
 			<div class="flex items-center gap-2">
 				<span class="w-32 text-muted-foreground">Pre-market</span>

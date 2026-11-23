@@ -26,9 +26,9 @@
 
 <Tabs.Root value="disclosures">
 	<Tabs.List>
-		<Tabs.Trigger value="disclosures"
-			>8-K disclosure categories ({data.disclosures.length})</Tabs.Trigger
-		>
+		<Tabs.Trigger value="disclosures">
+			8-K disclosure categories ({data.disclosures.length})
+		</Tabs.Trigger>
 		<Tabs.Trigger value="risks">Risk factor categories ({data.risks.length})</Tabs.Trigger>
 	</Tabs.List>
 	<Tabs.Content value="disclosures" class="grid gap-4 pt-2">
@@ -50,17 +50,18 @@
 					<Table.Body>
 						{#each data.disclosures as category (key(category))}
 							<Table.Row>
-								<Table.Cell class="whitespace-nowrap">{category.primary_category ?? '–'}</Table.Cell
-								>
-								<Table.Cell class="whitespace-nowrap"
-									>{category.secondary_category ?? '–'}</Table.Cell
-								>
-								<Table.Cell class="whitespace-nowrap"
-									>{category.tertiary_category ?? '–'}</Table.Cell
-								>
-								<Table.Cell class="max-w-xl text-xs text-muted-foreground"
-									>{category.description ?? ''}</Table.Cell
-								>
+								<Table.Cell class="whitespace-nowrap">
+									{category.primary_category ?? '–'}
+								</Table.Cell>
+								<Table.Cell class="whitespace-nowrap">
+									{category.secondary_category ?? '–'}
+								</Table.Cell>
+								<Table.Cell class="whitespace-nowrap">
+									{category.tertiary_category ?? '–'}
+								</Table.Cell>
+								<Table.Cell class="max-w-xl text-xs text-muted-foreground">
+									{category.description ?? ''}
+								</Table.Cell>
 							</Table.Row>
 						{/each}
 					</Table.Body>
@@ -87,17 +88,18 @@
 					<Table.Body>
 						{#each data.risks as category (key(category))}
 							<Table.Row>
-								<Table.Cell class="whitespace-nowrap">{category.primary_category ?? '–'}</Table.Cell
-								>
-								<Table.Cell class="whitespace-nowrap"
-									>{category.secondary_category ?? '–'}</Table.Cell
-								>
-								<Table.Cell class="whitespace-nowrap"
-									>{category.tertiary_category ?? '–'}</Table.Cell
-								>
-								<Table.Cell class="max-w-xl text-xs text-muted-foreground"
-									>{category.description ?? ''}</Table.Cell
-								>
+								<Table.Cell class="whitespace-nowrap">
+									{category.primary_category ?? '–'}
+								</Table.Cell>
+								<Table.Cell class="whitespace-nowrap">
+									{category.secondary_category ?? '–'}
+								</Table.Cell>
+								<Table.Cell class="whitespace-nowrap">
+									{category.tertiary_category ?? '–'}
+								</Table.Cell>
+								<Table.Cell class="max-w-xl text-xs text-muted-foreground">
+									{category.description ?? ''}
+								</Table.Cell>
 							</Table.Row>
 						{/each}
 					</Table.Body>

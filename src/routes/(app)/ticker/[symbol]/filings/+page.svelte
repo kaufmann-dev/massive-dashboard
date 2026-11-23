@@ -76,11 +76,11 @@
 							</Table.Cell>
 						</Table.Row>
 					{:else}
-						<Table.Row
-							><Table.Cell colspan={3} class="text-center text-muted-foreground"
-								>No filings found.</Table.Cell
-							></Table.Row
-						>
+						<Table.Row>
+							<Table.Cell colspan={3} class="text-center text-muted-foreground">
+								No filings found.
+							</Table.Cell>
+						</Table.Row>
 					{/each}
 				</Table.Body>
 			</Table.Root>
@@ -111,9 +111,9 @@
 				<Table.Body>
 					{#each data.form4 as filing (filing.rowKey)}
 						<Table.Row>
-							<Table.Cell class="whitespace-nowrap"
-								>{fmtDate(filing.transaction_date ?? filing.filing_date)}</Table.Cell
-							>
+							<Table.Cell class="whitespace-nowrap">
+								{fmtDate(filing.transaction_date ?? filing.filing_date)}
+							</Table.Cell>
 							<Table.Cell class="max-w-44 truncate" title={filing.officer_title}>
 								{filing.owner_name ?? filing.owner_cik}
 							</Table.Cell>
@@ -138,16 +138,16 @@
 							>
 								{fmtCompact(filing.transaction_shares)}
 							</Table.Cell>
-							<Table.Cell class="text-right tabular-nums"
-								>{fmtPrice(filing.transaction_price_per_share)}</Table.Cell
-							>
+							<Table.Cell class="text-right tabular-nums">
+								{fmtPrice(filing.transaction_price_per_share)}
+							</Table.Cell>
 						</Table.Row>
 					{:else}
-						<Table.Row
-							><Table.Cell colspan={5} class="text-center text-muted-foreground"
-								>No insider transactions found.</Table.Cell
-							></Table.Row
-						>
+						<Table.Row>
+							<Table.Cell colspan={5} class="text-center text-muted-foreground">
+								No insider transactions found.
+							</Table.Cell>
+						</Table.Row>
 					{/each}
 				</Table.Body>
 			</Table.Root>
@@ -170,15 +170,15 @@
 			<div class="grid gap-1 border-b pb-3 text-sm last:border-b-0">
 				<div class="flex flex-wrap items-center gap-2">
 					<span class="text-muted-foreground">{fmtDate(disclosure.filing_date)}</span>
-					{#if disclosure.primary_category}<Badge variant="secondary"
-							>{disclosure.primary_category}</Badge
-						>{/if}
-					{#if disclosure.secondary_category}<Badge variant="outline"
-							>{disclosure.secondary_category}</Badge
-						>{/if}
-					{#if disclosure.tertiary_category}<Badge variant="outline"
-							>{disclosure.tertiary_category}</Badge
-						>{/if}
+					{#if disclosure.primary_category}<Badge variant="secondary">
+							{disclosure.primary_category}
+						</Badge>{/if}
+					{#if disclosure.secondary_category}<Badge variant="outline">
+							{disclosure.secondary_category}
+						</Badge>{/if}
+					{#if disclosure.tertiary_category}<Badge variant="outline">
+							{disclosure.tertiary_category}
+						</Badge>{/if}
 					<a
 						href={disclosure.filing_url}
 						target="_blank"
@@ -215,8 +215,9 @@
 				<div class="flex flex-wrap items-center gap-2">
 					<span class="text-muted-foreground">{fmtDate(risk.filing_date)}</span>
 					{#if risk.primary_category}<Badge variant="secondary">{risk.primary_category}</Badge>{/if}
-					{#if risk.secondary_category}<Badge variant="outline">{risk.secondary_category}</Badge
-						>{/if}
+					{#if risk.secondary_category}<Badge variant="outline">
+							{risk.secondary_category}
+						</Badge>{/if}
 					{#if risk.tertiary_category}<Badge variant="outline">{risk.tertiary_category}</Badge>{/if}
 				</div>
 				{#if risk.supporting_text}

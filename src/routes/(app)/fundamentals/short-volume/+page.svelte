@@ -65,33 +65,33 @@
 					<Table.Row>
 						<Table.Cell><TickerLink ticker={record.ticker} /></Table.Cell>
 						<Table.Cell>{fmtDate(record.date)}</Table.Cell>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtCompact(record.short_volume)}</Table.Cell
-						>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtCompact(record.total_volume)}</Table.Cell
-						>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtCompact(record.short_volume)}
+						</Table.Cell>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtCompact(record.total_volume)}
+						</Table.Cell>
 						<Table.Cell class="text-right tabular-nums">
 							{record.short_volume_ratio !== undefined
 								? `${record.short_volume_ratio.toFixed(1)}%`
 								: '–'}
 						</Table.Cell>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtCompact(record.exempt_volume)}</Table.Cell
-						>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtCompact(record.nyse_short_volume)}</Table.Cell
-						>
-						<Table.Cell class="text-right tabular-nums"
-							>{fmtCompact(record.adf_short_volume)}</Table.Cell
-						>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtCompact(record.exempt_volume)}
+						</Table.Cell>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtCompact(record.nyse_short_volume)}
+						</Table.Cell>
+						<Table.Cell class="text-right tabular-nums">
+							{fmtCompact(record.adf_short_volume)}
+						</Table.Cell>
 					</Table.Row>
 				{:else}
-					<Table.Row
-						><Table.Cell colspan={8} class="text-center text-muted-foreground"
-							>No records found.</Table.Cell
-						></Table.Row
-					>
+					<Table.Row>
+						<Table.Cell colspan={8} class="text-center text-muted-foreground">
+							No records found.
+						</Table.Cell>
+					</Table.Row>
 				{/each}
 			</Table.Body>
 		</Table.Root>
